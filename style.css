@@ -1,0 +1,11 @@
+/*
+Theme Name: Readium
+Theme URI: http://rewdy.com/project/readium
+Author: Andrew Meyer
+Author URI: http://rewdy.com
+Description: A theme, inspired by the beautiful Medium.com website, designed for blogs with an emphasis on the textual content.
+Version: 1.0
+*/
+
+@import url(lib/font-awesome-4.0.3/css/font-awesome.min.css);
+@import url(css/style.css);

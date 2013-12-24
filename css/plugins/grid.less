@@ -1,0 +1,127 @@
+/* Percent Grid */
+
+@gutter:2em;
+@totalcol:12;
+
+// wrapper for the page
+#wrapper.blocked {
+	margin:0 auto 3em auto;
+	max-width: @maxwidth;
+}
+
+// grid columns holder
+.grid {
+	margin:0 auto;
+	max-width: @maxwidth;
+	min-width: @minwidth;
+	&:after {
+		.clearfixed;
+	}
+}
+
+.row {
+	margin-bottom:1.5em;
+}
+
+.column {
+	float:left;
+	padding:0 @gutter/2;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.gridLoop (@index) when (@index > 0) {
+	.grid .g@{index} {
+		.column;
+		width:percentage(@index/@totalcol);
+	}
+	.gridLoop(@index - 1);
+}
+.gridLoop(@totalcol);
+
+.pushLoop (@index) when (@index > 0) {
+	.grid .push@{index} {
+		position:relative;
+		left:percentage(@index/@totalcol);
+	}
+	.pushLoop(@index - 1);
+}
+.pushLoop(@totalcol);
+
+.pullLoop (@index) when (@index > 0) {
+	.grid .pull@{index} {
+		position:relative;
+		left:-(percentage(@index/@totalcol));
+	}
+	.pullLoop(@index - 1);
+}
+.pullLoop(@totalcol);
+
+.grid .row {
+	margin-bottom:0;
+	margin-left:-(@gutter/2);
+	margin-right:-(@gutter/2);
+}
+
+.grid .gcenter {
+	margin-left:auto;
+	margin-right:auto;
+	clear:left;
+	float:none;
+	&:after {
+		.clearfixed;
+	}
+}
+
+@media only screen and (max-width: @breakpoint) {
+	/* Reset grid */
+	.mob_column {
+		float:none;
+		margin:0;
+	}
+	.gridLoop (@index) when (@index > 0) {
+		.grid .g@{index} {
+			.mob_column;
+			width:auto;
+		}
+
+		.gridLoop(@index - 1);
+	}
+	.gridLoop(@totalcol);
+
+	.pushLoop (@index) when (@index > 0) {
+		.grid .push@{index} {
+			position:static;
+			left:0;
+		}
+		.pushLoop(@index - 1);
+	}
+	.pushLoop(@totalcol);
+
+	.pullLoop (@index) when (@index > 0) {
+		.grid .pull@{index} {
+			position:static;
+			left:0;
+		}
+		.pullLoop(@index - 1);
+	}
+	.pullLoop(@totalcol);
+
+	.grid .row {
+		margin-bottom:0;
+	}
+}
+
+/* Clearfixed styles to be included elsewhere. */
+.clearfixed {
+	content: " ";
+	display: block;
+	clear: left;
+	height: 0;
+	overflow: hidden;
+}
+
+.clearfix:after {
+	.clearfixed;
+}

@@ -1,0 +1,77 @@
+/* Classes */
+.attn {
+	font-size:1.15em;
+}
+.right {
+	text-align:right;
+}
+.left {
+	text-align:left;
+}
+.center {
+	text-align:center;
+}
+.small {
+	font-size:@small;
+	font-family:@sans;
+}
+
+.lined {
+	border-top: 1px solid @linecolor;
+}
+div.lined {
+	padding-top:0.4em;
+}
+ul.lined li {
+	list-style: none;
+	margin:0;
+	padding:0.4em;
+	border-bottom:1px solid @linecolor;
+}
+ol.lined li {
+	list-style-position: inside;
+	margin:0;
+	padding:0.4em;
+	border-bottom:1px solid @linecolor;
+}
+
+img.right {
+	float: right;
+	margin: 0 0 0.5em 0.5em;
+	text-align: center;
+}
+img.left {
+	float: left;
+	margin: 0 0.5em 0.5em 0;
+	text-align: center;
+}
+table.narrow {
+	width: auto;
+}
+
+.box-help {
+	display:block;
+	margin:0 0 @lineheight 0;
+	padding:0.5em 0.75em;
+	background-color:#fff;
+	font-family:@sans;
+	font-size:@small;
+	line-height:@lineheight;
+	text-align:center;
+}
+
+.show-mobile {
+	display:none;
+}
+@media only screen and (max-width:@breakpoint) {
+	.show-mobile {
+		display:block;
+	}
+	span.show-mobile,
+	i.show-mobile {
+		display:inline;
+	}
+	.show-big {
+		display:none;
+	}
+}

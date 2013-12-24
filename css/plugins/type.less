@@ -1,0 +1,110 @@
+/* Type + Tags */
+
+body {
+	font-family:@font;
+	font-size:@size;
+	line-height:@lineheight;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin:0.2rem 0 0.667rem 0;
+	line-height:unit(@fontScale*0.93, em);
+	font-family:@hfont;
+	font-weight:700;
+	a, a:visited {
+		color:@color;
+		text-decoration:none;
+		&:hover {
+			text-decoration:underline;
+		}
+	}
+	span {
+		font-size:@small;
+		font-weight:400;
+	}
+}
+
+h1 {
+	font-size:2em;
+	margin-bottom:0.5em;
+}
+h2 {
+	font-size:1.5em;
+}
+h3 {
+
+}
+
+
+p, ul, ol, blockquote, pre, table {
+	margin:0 0 @lineheight 0;
+}
+
+ul li,
+ol li {
+	margin-left:unit(@fontScale*2, em);
+}
+
+table {
+	border:1px solid @linecolor;
+	width:100%;
+	border-collapse: collapse;
+}
+table tr th,
+table tr td {
+	padding:0 0.4em;
+	margin:0;
+	border-bottom:1px solid @linecolor;
+}
+table tr th + th ,
+table tr td + td {
+	border-left:1px solid @linecolor;
+}
+table tr th {
+	text-align: left;
+}
+table tr:hover td {
+	background-color: lighten(@accent, 70%);
+}
+
+blockquote,
+pre {
+	padding:0.5em 1em;
+	background-color:@screen;
+}
+blockquote {
+	font-size:1.2em;
+	font-style:italic;
+	line-height:@lineheight;
+	p {
+		margin-bottom:0;
+		+ p {
+			margin-bottom:(@lineheight/2);
+		}
+	}
+}
+code,
+pre {
+	font-family:monospace;
+	font-size:1.15rem;
+}
+pre {
+	white-space: pre-wrap;
+}
+
+hr {
+	margin:1em 0;
+	border-top:1px solid @linecolor;
+}
+
+a {
+	color: @linkcolor;
+	&:visited {
+		color:@linkvisited;
+	}
+	&:hover {
+		color:@linkhover;
+	}
+}

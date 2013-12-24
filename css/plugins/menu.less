@@ -1,0 +1,105 @@
+/* Menu Styles */
+
+/*
+
+The way these menu styles work is that there are classes for a menu holder,
+for a menu list (the ul), a menu list item (the li), and a menu link (the a).
+You can you the template below to apply those styles to whichever elements
+are appropriate for your site.
+
+*/
+
+#nav-holder {
+	margin:0 0 1em 0;
+	background-color:@menubackgroundcolor;
+	&:after{
+		.clearfixafter;
+	}
+}
+nav {
+	.menu-holder;
+	.menu-holder-centered;
+}
+
+nav ul.menu {
+	.menu-list;
+	.menu-list-centered;
+}
+
+nav ul.menu li {
+	.menu-list-item;
+	.menu-list-item-centered;
+	@media only screen and (max-width: @breakpoint) {
+		.menu-list-mobile;
+	}
+}
+
+nav ul.menu li a {
+	.menu-list-link;
+	&:hover {
+		.menu-list-link-hover;
+	}
+
+}
+
+/* Below are the actual styles */
+.menu-holder {
+	background-color:@menubackgroundcolor;
+	color:@menulinkcolor;
+	margin:0;
+	padding:0;
+}
+.menu-holder-centered {
+	float:left;
+	width:100%;
+	overflow:hidden;
+	position:relative;
+}
+.menu-list {
+	margin:0;
+	padding:0;
+}
+.menu-list-centered {
+	clear:left;
+	float:left;
+	position:relative;
+	left:50%;
+}
+.menu-list-item {
+	list-style:none;
+	display:block;
+	float:left;
+	margin:0;
+	padding:0;
+}
+.menu-list-item-centered {
+	position:relative;
+	left:-50%;
+}
+.menu-list-link {
+	display:block;
+	//float:left;
+	padding:0.5em 0.8em;
+	background-color:@menubackgroundcolor;
+	color:@menulinkcolor;
+	text-decoration: none;
+}
+
+.menu-list-link-hover {
+	text-decoration: underline;
+	background-color: darken(@menubackgroundcolor, 10%);
+}
+
+// mobile ones
+.menu-list-mobile {
+	float:none;
+}
+
+/* Utility */
+.clearfixafter {
+	content: '\0020';
+	display: block;
+	clear: left;
+	height: 0;
+	overflow: hidden;
+}
