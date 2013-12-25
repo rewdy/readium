@@ -346,10 +346,29 @@ article {
 		}
 	}
 
+	// Image alignment classes. These are from the wordpress codex.
+	img.alignright,
+	a img.alignright {
+		float:right; 
+		margin:0 0 1em 1em;
+	}
+	img.alignleft,
+	a img.alignleft {
+		float:left;
+		margin:0 1em 1em 0;
+	}
+	img.aligncenter,
+	a img.aligncenter {
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
 	// attachments (i.e. images)
-	div.attachment {
+	div[id^='attachment'] {
 		background-color:@screen;
 		margin-bottom:@lineheight;
+		width:auto!important;
 		&.alignnone {
 			margin-left:-150px;
 			@media only screen and (max-width:@maxwidth) {
@@ -359,7 +378,7 @@ article {
 				display:block;
 			}
 		}
-		.caption {
+		.wp-caption-text {
 			padding:0.5em;
 			text-align:right;
 			font-family:@sans;
@@ -458,7 +477,10 @@ footer#site-footer {
 	width:0;
 	height:2px;
 	background-color:@accent;
-	.transition;
+	-webkit-transition:all 0.15s;
+	-moz-transition:all 0.15s;
+	-ms-transition:all 0.15s;
+	transition:all 0.15s;
 }
 
 /*

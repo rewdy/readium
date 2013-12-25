@@ -113,8 +113,11 @@ article .details .avatar{float:left;margin-right:.5em}article .details .avatar i
 article .links{float:right;color:#bbb;font-family:'Open Sans',sans-serif;font-weight:400;font-size:.8em;line-height:1.5em}article .links ul.link-list{margin:0;padding:0}article .links ul.link-list li{display:inline;margin:0;padding:0;list-style:none}article .links ul.link-list li a{display:inline-block;padding:0 .5em .25em;color:#a2a2a2;border-bottom:1px solid #e6e6e6;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;transition:all .3s}article .links ul.link-list li a:hover{color:#69f;border-bottom-color:#69f}
 article .links ul.link-list li a .text{display:none}
 article div.page-links{margin-bottom:1.5em;padding:.25em .7em;background-color:#f2f2f2;font-family:'Open Sans',sans-serif;font-size:.8em;font-weight:700}article div.page-links a{font-weight:400}
-article div.attachment{background-color:#f2f2f2;margin-bottom:1.5em}article div.attachment.alignnone{margin-left:-150px}@media only screen and (max-width:750px){article div.attachment.alignnone{margin-left:0}}article div.attachment.alignnone img{display:block}
-article div.attachment .caption{padding:.5em;text-align:right;font-family:'Open Sans',sans-serif;font-size:.8em;font-style:italic}
+article img.alignright,article a img.alignright{float:right;margin:0 0 1em 1em}
+article img.alignleft,article a img.alignleft{float:left;margin:0 1em 1em 0}
+article img.aligncenter,article a img.aligncenter{display:block;margin-left:auto;margin-right:auto}
+article div[id^='attachment']{background-color:#f2f2f2;margin-bottom:1.5em;width:auto !important}article div[id^='attachment'].alignnone{margin-left:-150px}@media only screen and (max-width:750px){article div[id^='attachment'].alignnone{margin-left:0}}article div[id^='attachment'].alignnone img{display:block}
+article div[id^='attachment'] .wp-caption-text{padding:.5em;text-align:right;font-family:'Open Sans',sans-serif;font-size:.8em;font-style:italic}
 .listing h1{padding:.75em 0;margin-bottom:1.5em;border:solid #e6e6e6;border-width:1px 0;font-size:.75em;color:#bbb;text-transform:uppercase;letter-spacing:.1em}
 .listing article+article{padding-top:1.5em;border-top:1px solid #e6e6e6}
 #content-comments h2 .count{margin-left:.5em}
@@ -124,7 +127,7 @@ ul.sharing-list{margin:0;padding:0;text-align:center}ul.sharing-list li{margin:0
 footer#site-footer{color:#a2a2a2}footer#site-footer h2{font-size:1.15em;text-transform:uppercase;font-weight:600}
 footer#site-footer p,footer#site-footer ul,footer#site-footer ol{font-size:.8em}
 footer#site-footer a{color:#888}
-.readline{position:fixed;top:0;left:0;width:0;height:2px;background-color:#69f;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;transition:all .3s}
+.readline{position:fixed;top:0;left:0;width:0;height:2px;background-color:#69f;-webkit-transition:all .15s;-moz-transition:all .15s;-ms-transition:all .15s;transition:all .15s}
 .attn{font-size:1.15em}
 .right{text-align:right}
 .left{text-align:left}
