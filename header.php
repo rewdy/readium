@@ -54,7 +54,7 @@ Header template file
 			<div id="page">
 				<div id="wrapper">
 					
-					<header id="site-header">
+					<header id="site-header"<?php echo (get_header_image()=='') ? ' class="no-image"' : ''; ?>>
 						<div id="site-header-overlay">
 							<div class="grid">
 								<div id="site-header-text" class="g12 text-center">

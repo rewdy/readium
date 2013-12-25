@@ -69,7 +69,7 @@ as there is a lot of overlap between the two.
 @import "plugins/forms.less";
 
 body {
-	background-color:#e6e6e6; // footer color
+	background-color:@linecolor; // footer color
 }
 
 /*
@@ -128,7 +128,7 @@ body {
 footer#site-footer {
 	padding:2em 0;
 	.lined {
-		border-color:#ddd;
+		border-color:#ddd; // this doesn't use @linecolor because it needs to be a bit darker
 	}
 }
 
@@ -208,7 +208,7 @@ footer#site-footer {
 // header
 header#site-header {
 	position:relative;
-	min-height:200px;
+	min-height:14em;
 	#site-header-text {
 		text-align:center;
 		color:#fff;
@@ -236,7 +236,6 @@ header#site-header {
 		z-index:1;
 	}
 	#deco {
-		background-color:#ccc;
 		background-repeat:no-repeat;
 		background-position:center top;
 		background-size:100% auto;
@@ -245,6 +244,9 @@ header#site-header {
 			display:block;
 			visibility:hidden;
 		}
+	}
+	&.no-image {
+		background-color:lighten(@color, 10%);
 	}
 }
 
@@ -456,6 +458,7 @@ footer#site-footer {
 	width:0;
 	height:2px;
 	background-color:@accent;
+	.transition;
 }
 
 /*

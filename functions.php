@@ -10,7 +10,7 @@ Functions file
 */
 
 // Add menus
-if ( function_exists('register_nav_menu')) {
+if (function_exists('register_nav_menu')) {
 	register_nav_menu('primary', 'Main Menu');
 	register_nav_menu('footer', 'Footer Menu');
 }
@@ -47,12 +47,44 @@ add_action('widgets_init', 'readium_widget_init');
 
 // Custom Header Image
 $header_args = array(
+	'default-image'	=> '%s/img/headers/railroad.jpg',
 	'width'			=> 2000,
+	'height'		=> 800,
 	'flex-height' 	=> true,
-	'default-image'	=> get_template_directory_uri() . '/img/headers/railroad.jpg',
-	'uploads' 		=> true,
+	'flex-width'	=> false,
+	'uploads'		=> true,
 );
 add_theme_support('custom-header', $header_args);
+
+// Custom Header Options
+$header_options = array(
+	'railroad' 		=> array(
+		'url' 			=> '%s/img/headers/railroad.jpg',
+		'thumbnail_url'	=> '%s/img/headers/railroad-thumbnail.jpg',
+		'description' 	=> __('Railroad Beach'),
+	),
+	'treedlane' 	=> array(
+		'url' 			=> '%s/img/headers/treed-lane.jpg',
+		'thumbnail_url'	=> '%s/img/headers/treed-lane-thumbnail.jpg',
+		'description' 	=> __('Treed Lane'),
+	),
+	'skyrose' 		=> array(
+		'url' 			=> '%s/img/headers/sky-rose.jpg',
+		'thumbnail_url'	=> '%s/img/headers/sky-rose-thumbnail.jpg',
+		'description' 	=> __('Roses in the Sky'),
+	),
+	'sunrisefield' 	=> array(
+		'url' 			=> '%s/img/headers/sunrise-field.jpg',
+		'thumbnail_url'	=> '%s/img/headers/sunrise-field-thumbnail.jpg',
+		'description' 	=> __('Sunrise over a Field'),
+	),
+	'hiker' 	=> array(
+		'url' 			=> '%s/img/headers/hiker.jpg',
+		'thumbnail_url'	=> '%s/img/headers/hiker-thumbnail.jpg',
+		'description' 	=> __("Hiker's Triumph"),
+	),
+);
+register_default_headers($header_options);
 
 // Content width
 if (!isset($content_width)) {
