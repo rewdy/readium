@@ -17,30 +17,30 @@ $(function(){
 	});
 
 	// Set pageTop variable for other functions to use
-	window.scrolled = false;
 	window.pageTop = $('html, body').scrollTop();
 	$(window).scroll(function(){
-		window.scrolled = true;
 		window.pageTop = $('html, body').scrollTop();
 	});
-
-	// Parallax effect on header image
-	var header_height = $('#site-header').not('.no-image').height();
-	var backgroundOffset = 0;
-	if (header_height) {
-		setInterval(function(){
-			if (window.pageTop < header_height) {
-				backgroundOffset = (window.pageTop/2) * -1;
-				$('#deco').css('background-position', 'center ' + backgroundOffset + 'px');
-			}
-		}, 5);
-	}
 
 	enableSharing();
 });
 
 $(window).load(function(){
-	// Read line - comes in the load section because if images aren't loaded, there will be issues in calculating offsets.
+	// Various items come in the load section because if images aren't loaded, there will be issues in calculating offsets.
+
+	// Parallax effect on header image
+	var header_height = $('#site-header').not('.no-image').height();
+	var backgroundOffset = 0;
+	if (header_height) {
+		$(window).scroll(function(){
+			if (window.pageTop < header_height) {
+				backgroundOffset = (window.pageTop/2) * -1;
+				$('#deco').css('background-position', 'center ' + backgroundOffset + 'px');
+			}
+		});
+	}
+
+	// Read line
 	$('.readline').each(function(){
 		var enabled = false;
 		var line = $(this);
@@ -49,16 +49,14 @@ $(window).load(function(){
 		var articleBottom = articleTop + article.outerHeight();
 		var calculationPadding = 400; // this is extra space to add when calculating the percentage because people don't read at the top of their screens.
 
-		// checked if the page has scrolled and sets the readline accordingly
+		// sets the readline accordingly on an interval to keep from bogging down the scroll event
 		setInterval(function(){
-			if (window.scrolled) {
-				var top = window.pageTop;
-				if (top >= articleTop && top <= articleBottom) {
-					var percentageFinished = Math.round((top - articleTop) / (articleBottom - articleTop - calculationPadding) * 100);
-					line.width(percentageFinished + '%');
-				} else {
-					line.width(0);
-				}
+			var top = window.pageTop;
+			if (top >= articleTop && top <= articleBottom) {
+				var percentageFinished = Math.round((top - articleTop) / (articleBottom - articleTop - calculationPadding) * 100);
+				line.width(percentageFinished + '%');
+			} else {
+				line.width(0);
 			}
 		}, 50);
 	});
