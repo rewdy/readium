@@ -23,7 +23,7 @@ Drawer template file
 					?>
 					<?php wp_nav_menu($menu_args); ?>
 				</nav>
-				<div id="drawer-widgets">
-					<?php get_sidebar('drawer'); ?>
-				</div>
+
+				<?php get_sidebar('drawer'); ?>
+
 			</div> <!-- close #drawer -->
