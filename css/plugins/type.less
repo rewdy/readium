@@ -20,7 +20,8 @@ h1, h2, h3, h4, h5, h6 {
 			text-decoration:underline;
 		}
 	}
-	span {
+	span,
+	small {
 		font-size:@small;
 		font-weight:400;
 	}
@@ -92,6 +93,12 @@ pre {
 }
 pre {
 	white-space: pre-wrap;
+}
+
+acronym,
+abbr {
+	cursor:help;
+	border-bottom:1px dotted @linecolor;
 }
 
 hr {
