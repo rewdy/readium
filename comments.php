@@ -43,8 +43,6 @@ if (post_password_required()) {
 				<p><?php _e('Comments are closed.'); ?></p>
 				<?php endif; ?>
 
-				<hr />
-
 				<?php comment_form(); ?>
 
 			</div>
