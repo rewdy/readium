@@ -167,12 +167,12 @@ function readium_comment_form() {
 		'must_log_in'          => '<p class="must-log-in help">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
 		'logged_in_as'         => '<p class="logged-in-as help">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
 		'comment_notes_before' => '<p class="comment-notes help">' . __( 'Your email address will not be published.' ) . ( $req ? $required_text : '' ) . '</p>',
-		'comment_notes_after'  => '<p class="some-html-allowed help">' . sprintf(__('<a title="%s">Some</a> <abbr title="Hyper Text Markup Language">HTML</abbr> allowed.'), allowed_tags()) . '</p>', /* customized */
+		'comment_notes_after'  => '<p class="some-html-allowed help small">' . sprintf(__('Some <abbr title="Hyper Text Markup Language">HTML</abbr> allowed: <code>%s</code>'), allowed_tags()) . '</p>', /* customized */
 		'id_form'              => 'commentform',
 		'id_submit'            => 'submit',
 		'title_reply'          => __( 'Leave a Comment' ),
 		'title_reply_to'       => __( 'Leave a Reply to %s' ),
-		'cancel_reply_link'    => __( 'Cancel comment' ),
+		'cancel_reply_link'    => __( 'Cancel Comment' ),
 		'label_submit'         => __( 'Post Comment' )
 	);
 	
