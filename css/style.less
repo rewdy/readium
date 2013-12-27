@@ -267,7 +267,8 @@ article {
 	}
 
 	// details (i.e. meta, date, etc.)
-	.details {
+	.details,
+	.authorship {
 		color:@light;
 		font-family:@sans;
 		font-weight:300;
@@ -283,7 +284,7 @@ article {
 		}
 		.avatar {
 			float:left;
-			margin-right:0.5em;
+			margin-right:0.35em;
 			img {
 				position:relative;
 				top:-0.5em;
@@ -322,9 +323,9 @@ article {
 				list-style:none;
 				a {
 					display:inline-block;
-					padding:0 0.5em 0.25em;
+					padding:0 0.5em;
+					position:relative;
 					color:@lightlinkcolor;
-					border-bottom:1px solid @linecolor;
 					.transition;
 					&:hover {
 						color:@linkcolor;

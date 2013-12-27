@@ -96,18 +96,17 @@ if (!isset($content_width)) {
 // Add automatic feed links
 add_theme_support('automatic-feed-links');
 
-// function readium_customize_regsiter($wp_customize) {
-// 	$wp_customize->add_section('readium_display_settings', array(
-// 		'title'		=> __('Readium Display Settings'),
-// 		'priority'	=> 30,
-// 	));
-// 	$wp_customize->add_setting('Listing Display Format', array(
-// 		'default' 	=> 'excerpt',
+// adding fuction to get the author posts link (the only built-in function echos it).
+if (!function_exists('get_author_posts_link')) {
+	// must be called from within the loop
+	function get_author_posts_link() {
+		$the_author = get_the_author();
+		$author_url = get_author_posts_url(get_the_author_meta('ID'));
+		return '<a href="' . $author_url . '">' . $the_author . '</a>';
+	}
+}
 
-// 	));
-// }
-
-// Custome comment output
+// Custom comment output
 function readium_comment($comment, $args, $depth) {
 		$GLOBALS['comment'] = $comment;
 		extract($args, EXTR_SKIP);
