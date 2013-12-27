@@ -29,6 +29,15 @@ Main template file
 
 									<?php endwhile; ?>
 
+									<?php // echo paginate_links(); ?>
+
+									<?php if (get_next_posts_link() != '') :?>
+									<div class="nav-previous left"><?php next_posts_link( '&larr; Older posts' ); ?></div>
+									<?php endif; ?>
+									<?php if (get_previous_posts_link() != '') :?>
+									<div class="nav-next right"><?php previous_posts_link( 'Newer posts &rarr;' ); ?></div>
+									<?php endif; ?>
+
 								<?php else : ?>
 
 								<article id="post-0" class="post no-results not-found">
