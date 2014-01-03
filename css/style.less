@@ -218,7 +218,8 @@ header#site-header {
 		font-size:2.5em;
 		font-weight:700;
 		letter-spacing:-0.05em;
-		margin-bottom:0.33em;
+		line-height:1.25em;
+		margin:0 0 0.33em 0;
 		a {
 			color:inherit;
 			text-decoration:none;
@@ -233,7 +234,7 @@ header#site-header {
 		bottom:25%;
 		left:0;
 		width:100%;
-		z-index:1;
+		z-index:2;
 	}
 	#deco {
 		background-repeat:no-repeat;
@@ -244,6 +245,17 @@ header#site-header {
 			display:block;
 			visibility:hidden;
 		}
+		// &:after {
+		// 	content:" ";
+		// 	display:block;
+		// 	position:absolute;
+		// 	top:0;
+		// 	left:0;
+		// 	height:100%;
+		// 	width:100%;
+		// 	background-color:rgba(0,0,0,0.2);
+		// 	z-index:1;
+		// }
 	}
 	&.no-image {
 		background-color:lighten(@color, 10%);
