@@ -20,7 +20,7 @@ Main template file
 								
 								<?php if (have_posts()) : ?>
 
-									<?php if (is_archive()) get_template_part('partials/archiveheading'); ?>
+									<?php if (is_archive() || is_home()) get_template_part('partials/archiveheading'); ?>
 
 									<?php /* Start the Loop */ ?>
 									<?php while (have_posts()) : the_post(); ?>
