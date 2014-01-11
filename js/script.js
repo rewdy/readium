@@ -17,9 +17,9 @@ $(function(){
 	});
 
 	// Set pageTop variable for other functions to use
-	window.pageTop = $('html, body').scrollTop();
+	window.pageTop = $('html,body').scrollTop();
 	$(window).scroll(function(){
-		window.pageTop = $('html, body').scrollTop();
+		window.pageTop = $(window).scrollTop();
 	});
 
 	enableSharing();
@@ -34,7 +34,7 @@ $(window).load(function(){
 	if (header_height) {
 		$(window).scroll(function(){
 			if (window.pageTop < header_height) {
-				backgroundOffset = (window.pageTop/2) * -1;
+				backgroundOffset = Math.abs(window.pageTop/2) * -1;
 				$('#deco').css('background-position', 'center ' + backgroundOffset + 'px');
 			}
 		});
