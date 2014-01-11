@@ -93,7 +93,7 @@ body {
 		left:-17em;
 		width:17em;
 		height:100%;
-		z-index:2;
+		z-index:10;
 		padding-top:3em;
 	}
 	#page {
@@ -101,6 +101,16 @@ body {
 		top:0;
 		left:0;
 		width:100%;
+		#page_overlay {
+			position:fixed;
+			top:0;
+			left:0;
+			width:0;
+			height:100%;
+			z-index:5;
+			background-color:rgba(0,0,0,0);
+			.transition;
+		}
 	}
 	&.open {
 		overflow:hidden;
@@ -110,6 +120,11 @@ body {
 		}
 		#page {
 			left:17em;
+			cursor:w-resize;
+			#page_overlay {
+				width:100%;
+				background-color:rgba(0,0,0,0.4);
+			}
 		}
 	}
 }
@@ -570,6 +585,7 @@ footer#site-footer {
 	}
 
 	.widget {
+		margin-bottom:@lineheight;
 		.lined > ul {
 			margin-top:-0.4em;
 		}
@@ -581,6 +597,9 @@ footer#site-footer {
 				padding:0.4em 0;
 				list-style:none;
 				border-bottom:1px solid #ddd;
+			}
+			li:last-child {
+				border-bottom:0 none;
 			}
 		}
 	}

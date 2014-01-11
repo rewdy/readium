@@ -88,10 +88,10 @@ input.full{width:96%}
 @media only screen and (max-width:640px){.mob_column{float:none;margin:0} .grid .g12{float:none;margin:0;width:auto} .grid .g11{float:none;margin:0;width:auto} .grid .g10{float:none;margin:0;width:auto} .grid .g9{float:none;margin:0;width:auto} .grid .g8{float:none;margin:0;width:auto} .grid .g7{float:none;margin:0;width:auto} .grid .g6{float:none;margin:0;width:auto} .grid .g5{float:none;margin:0;width:auto} .grid .g4{float:none;margin:0;width:auto} .grid .g3{float:none;margin:0;width:auto} .grid .g2{float:none;margin:0;width:auto} .grid .g1{float:none;margin:0;width:auto} .grid .push12{position:static;left:0} .grid .push11{position:static;left:0} .grid .push10{position:static;left:0} .grid .push9{position:static;left:0} .grid .push8{position:static;left:0} .grid .push7{position:static;left:0} .grid .push6{position:static;left:0} .grid .push5{position:static;left:0} .grid .push4{position:static;left:0} .grid .push3{position:static;left:0} .grid .push2{position:static;left:0} .grid .push1{position:static;left:0} .grid .pull12{position:static;left:0} .grid .pull11{position:static;left:0} .grid .pull10{position:static;left:0} .grid .pull9{position:static;left:0} .grid .pull8{position:static;left:0} .grid .pull7{position:static;left:0} .grid .pull6{position:static;left:0} .grid .pull5{position:static;left:0} .grid .pull4{position:static;left:0} .grid .pull3{position:static;left:0} .grid .pull2{position:static;left:0} .grid .pull1{position:static;left:0} .grid .row{margin-bottom:0}}.clearfixed{content:" ";display:block;clear:left;height:0;overflow:hidden}
 .clearfix:after{content:" ";display:block;clear:left;height:0;overflow:hidden}
 #control #drawer,#control #page{-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;transition:all .3s}
-#control #drawer{position:fixed;top:0;left:-17em;width:17em;height:100%;z-index:2;padding-top:3em}
-#control #page{position:relative;top:0;left:0;width:100%}
+#control #drawer{position:fixed;top:0;left:-17em;width:17em;height:100%;z-index:10;padding-top:3em}
+#control #page{position:relative;top:0;left:0;width:100%}#control #page #page_overlay{position:fixed;top:0;left:0;width:0;height:100%;z-index:5;background-color:rgba(0,0,0,0);-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;transition:all .3s}
 #control.open{overflow:hidden;width:100%}#control.open #drawer{left:0}
-#control.open #page{left:17em}
+#control.open #page{left:17em;cursor:w-resize}#control.open #page #page_overlay{width:100%;background-color:rgba(0,0,0,0.4)}
 #wrapper{background-color:#fff;color:#222}
 #content-body,#content-comments{padding:3em 0}
 #content-comments{background-color:#f2f2f2;color:#7b7b7b}
@@ -135,8 +135,9 @@ ul.sharing-list li a:hover{background-color:#104f40}
 footer#site-footer{color:#a2a2a2}footer#site-footer h2{font-size:1.15em;text-transform:uppercase;font-weight:600}
 footer#site-footer p,footer#site-footer ul,footer#site-footer ol{font-size:.8em}
 footer#site-footer a{color:#888}footer#site-footer a:hover{color:#222}
-footer#site-footer .widget .lined>ul{margin-top:-0.4em}
+footer#site-footer .widget{margin-bottom:1.5em}footer#site-footer .widget .lined>ul{margin-top:-0.4em}
 footer#site-footer .widget ul{margin:0;padding:0}footer#site-footer .widget ul li{margin:0;padding:.4em 0;list-style:none;border-bottom:1px solid #ddd}
+footer#site-footer .widget ul li:last-child{border-bottom:0 none}
 .readline{position:fixed;top:0;left:0;width:0;height:2px;background-color:#187a62;-webkit-transition:all .15s;-moz-transition:all .15s;-ms-transition:all .15s;transition:all .15s}
 .attn{font-size:1.15em}
 .right{text-align:right}
