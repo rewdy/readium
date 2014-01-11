@@ -55,10 +55,12 @@ Article default template file
 
 	<div class="details"><?php if ($categories_list) : ?>Posted in <?php echo $categories_list; ?> &bullet; <?php endif; ?><a href="<?php the_permalink(); ?>" title="Permalink"><?php the_time(get_option('date_format')); ?></a></div>
 
+	<?php if (is_singular()) : ?>
 	<div class="sharing">
 		<div class="sharing-heading">Share</div>
 		<?php share_links(get_permalink(), get_the_title()); ?>
 	</div>
+	<?php endif; ?>
 
 	<div class="readline"><!-- Indcator for how much of the article has been read --></div>
 
