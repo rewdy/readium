@@ -193,11 +193,11 @@ function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = '
 
 	$output = '';
 	$output .= '<ul class="' . $class . '">' . "\n";
-	$output .= "\t" . '<li><a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]={{title}}&amp;p[url]={{url}}" class="facebook"><i class="{{icon_prefix}}facebook"></i> Facebook</a></li>' . "\n";
-	$output .= "\t" . '<li><a href="https://twitter.com/intent/tweet?url={{url}}&amp;text={{title}}" class="twitter"><i class="{{icon_prefix}}twitter"></i> Twitter</a></li>' . "\n";
-	$output .= "\t" . '<li><a href="https://alpha.app.net/intent/post?url={{url}}&amp;text={{title}}" class="adn"><i class="{{icon_prefix}}adn"></i> App.net</a></li>' . "\n";
-	$output .= "\t" . '<li><a href="https://plus.google.com/share?url={{url}}" class="gplus"><i class="{{icon_prefix}}google-plus"></i> Google +</a></li>' . "\n";
-	$output .= "\t" . '<li><a href="mailto:?&amp;Subject={{title}}&amp;Body={{url}}" class="email"><i class="{{icon_prefix}}envelope"></i> Email</a></li>' . "\n";
+	$output .= "\t" . '<li><a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]={{title}}&amp;p[url]={{url}}" class="facebook"><i class="{{icon_prefix}}facebook"></i> <span class="text">Facebook</span></a></li>' . "\n";
+	$output .= "\t" . '<li><a href="https://twitter.com/intent/tweet?url={{url}}&amp;text={{title}}" class="twitter"><i class="{{icon_prefix}}twitter"></i> <span class="text">Twitter</span></a></li>' . "\n";
+	$output .= "\t" . '<li><a href="https://alpha.app.net/intent/post?url={{url}}&amp;text={{title}}" class="adn"><i class="{{icon_prefix}}adn"></i> <span class="text">App.net</span></a></li>' . "\n";
+	$output .= "\t" . '<li><a href="https://plus.google.com/share?url={{url}}" class="gplus"><i class="{{icon_prefix}}google-plus"></i> <span class="text">Google +</span></a></li>' . "\n";
+	$output .= "\t" . '<li><a href="mailto:?&amp;Subject={{title}}&amp;Body={{url}}" class="email"><i class="{{icon_prefix}}envelope"></i> <span class="text">Email</span></a></li>' . "\n";
 	$output .= '</ul>';
 
 	$output = preg_replace('/{{url}}/', $url, $output);
