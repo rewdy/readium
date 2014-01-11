@@ -104,9 +104,9 @@ footer#site-footer{padding:2em 0}footer#site-footer .lined{border-color:#ddd}
 #drawer-widgets{margin:1.5em .75em;padding:.75em;background-color:#2f2f2f;font-size:.8em;line-height:1.5em}#drawer-widgets .widget h2{font-size:1.15em;text-transform:uppercase;font-weight:600}
 #drawer-widgets .widget ul{margin:0;padding:0}#drawer-widgets .widget ul li{margin:0 0 .5em 1.5em;padding:0}
 header#site-header{position:relative;min-height:14em}header#site-header #site-header-text{text-align:center;color:#fff}
-header#site-header #site-title{font-family:'Open Sans',sans-serif;font-size:2.5em;font-weight:700;letter-spacing:-0.05em;margin-bottom:.33em}header#site-header #site-title a{color:inherit;text-decoration:none}
+header#site-header #site-title{font-family:'Open Sans',sans-serif;font-size:2.5em;font-weight:700;letter-spacing:-0.05em;line-height:1.25em;margin:0 0 .33em 0}header#site-header #site-title a{color:inherit;text-decoration:none}
 header#site-header #site-tagline{font-family:'Open Sans',sans-serif;font-weight:400}
-header#site-header #site-header-overlay{position:absolute;bottom:25%;left:0;width:100%;z-index:1}
+header#site-header #site-header-overlay{position:absolute;bottom:25%;left:0;width:100%;z-index:2}
 header#site-header #deco{background-repeat:no-repeat;background-position:center top;background-size:100% auto;background-attachment:fixed}header#site-header #deco img{display:block;visibility:hidden}
 header#site-header.no-image{background-color:#3c3c3c}
 article{margin-bottom:2em}article.page h1{text-align:center;margin-bottom:1em}
@@ -124,6 +124,8 @@ article div[id^='attachment']{background-color:#f2f2f2;margin-bottom:1.5em;width
 article div[id^='attachment'] .wp-caption-text{padding:.5em;text-align:right;font-family:'Open Sans',sans-serif;font-size:.8em;font-style:italic}
 .listing h1{padding:.75em 0;margin-bottom:1.5em;border:solid #e6e6e6;border-width:1px 0;font-size:.75em;color:#bbb;text-transform:uppercase;letter-spacing:.1em}
 .listing article+article{padding-top:1.5em;border-top:1px solid #e6e6e6}
+.post-directional-links,.pagination-links{padding:1em 0;border:solid #e6e6e6;border-width:1px 0;font-family:'Open Sans',sans-serif}.post-directional-links a,.pagination-links a{text-decoration:none}
+.post-directional-links:after,.pagination-links:after{content:" ";display:block;clear:left;height:0;overflow:hidden}
 #content-comments h2 .count{margin-left:.5em}
 #content-comments .comment-awaiting-moderation{position:relative;top:.5em;text-align:center}
 ul.comment-list{margin:0;padding:.4em 0 0 0;border-top:1px solid #e6e6e6}ul.comment-list li{display:block;list-style:none;margin:0;padding:0}

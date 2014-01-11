@@ -20,7 +20,7 @@ Main template file
 								
 								<?php if (have_posts()) : ?>
 
-									<?php if (is_archive()) get_template_part('partials/archiveheading'); ?>
+									<?php if (is_archive() || is_home()) get_template_part('partials/archiveheading'); ?>
 
 									<?php /* Start the Loop */ ?>
 									<?php while (have_posts()) : the_post(); ?>
@@ -31,13 +31,17 @@ Main template file
 
 									<?php // echo paginate_links(); ?>
 
-									<?php if (get_next_posts_link() != '') :?>
-									<div class="nav-previous left"><?php next_posts_link( '&larr; Older posts' ); ?></div>
+									<?php if (!is_singular()) : ?>
+									<div class="pagination-links">
+										<?php if (get_next_posts_link() != '') :?>
+										<div class="nav-previous left"><?php next_posts_link( '&larr; Older posts' ); ?></div>
+										<?php endif; ?>
+										<?php if (get_previous_posts_link() != '') :?>
+										<div class="nav-next right"><?php previous_posts_link( 'Newer posts &rarr;' ); ?></div>
+										<?php endif; ?>
+									</div>
 									<?php endif; ?>
-									<?php if (get_previous_posts_link() != '') :?>
-									<div class="nav-next right"><?php previous_posts_link( 'Newer posts &rarr;' ); ?></div>
-									<?php endif; ?>
-
+	
 								<?php else : ?>
 
 								<article id="post-0" class="post no-results not-found">
