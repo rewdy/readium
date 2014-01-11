@@ -12,7 +12,14 @@ Readium theme javascript. Uses jQuery (obviously).
 $(function(){
 	// Drawer toggle
 	$('#navigation-toggle-link').click(function(){
-		$('#control').toggleClass('open');
+		if ($('#control').hasClass('open')) {
+			$('#control').removeClass('open');
+		} else {
+			$('#control').addClass('open');
+			$('#page').one('click', function(){
+				$('#control').removeClass('open');
+			})
+		}
 		return false;
 	});
 
@@ -63,23 +70,6 @@ $(window).load(function(){
 });
 
 function enableSharing() {
-	// Sharing: modal behavior and sharing links
-	$('a.share-link').click(function(){
-		$(this).closest('article').find('.m-share').addClass('m-show');
-		return false;
-	});
-	$('a.perma-link').click(function(){
-		$(this).closest('article').find('.m-permalink').addClass('m-show');
-		return false;
-	});
-	$('.m-permalink input.permalink').click(function(){
-		$(this).select();
-		return false;
-	});
-	$('a.m-close-link').click(function(){
-		$(this).closest('.m-show').removeClass('m-show');
-		return false;
-	});
 	$('.sharing-list a').not('.email').click(function(){
 		href = $(this).attr('href');
 		openWindow(href, 'Share');
@@ -89,9 +79,13 @@ function enableSharing() {
 
 // function to open urls in a new window (used for sharing)
 function openWindow(url, title) {
+	var winWidth = 700;
+	var winHeight = 450;
+	var left = (screen.width/2)-(winWidth/2);
+	var top = (screen.height/2)-(winHeight/2);
 	window.open(
 		url, // url
 		title, // window name
-		'height=450,width=700,left=50,top=50'
+		'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height='+winHeight+', width='+winWidth+', left='+left+', top='+top
 	);
 }
