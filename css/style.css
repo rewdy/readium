@@ -122,6 +122,8 @@ article div[id^='attachment']{background-color:#f2f2f2;margin-bottom:1.5em;width
 article div[id^='attachment'] .wp-caption-text{padding:0.5em;text-align:right;font-family:'Open Sans',sans-serif;font-size:0.8em;font-style:italic;}
 .listing h1{padding:0.75em 0;margin-bottom:1.5em;border:solid #e6e6e6;border-width:1px 0;font-size:0.75em;color:#bbbbbb;text-transform:uppercase;letter-spacing:0.1em;}
 .listing article+article{padding-top:1.5em;border-top:1px solid #e6e6e6;}
+.post-directional-links,.pagination-links{padding:1em 0;border:solid #e6e6e6;border-width:1px 0;font-family:'Open Sans',sans-serif;}.post-directional-links a,.pagination-links a{text-decoration:none;}
+.post-directional-links:after,.pagination-links:after{content:" ";display:block;clear:left;height:0;overflow:hidden;}
 #content-comments h2 .count{margin-left:0.5em;}
 #content-comments .comment-awaiting-moderation{position:relative;top:0.5em;text-align:center;}
 ul.comment-list{margin:0;padding:0.4em 0 0 0;border-top:1px solid #e6e6e6;}ul.comment-list li{display:block;list-style:none;margin:0;padding:0;}

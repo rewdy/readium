@@ -89,7 +89,9 @@ Article default template file
 
 <?php if (is_single()) : ?>
 <div class="row">
-	<div class="previous-post-link g6"><?php previous_post_link(); ?>&nbsp;</div>
-	<div class="next-post-link g6 right">&nbsp;<?php next_post_link(); ?></div>
+	<div class="post-directional-links">
+		<div class="previous-post-link g6"><?php previous_post_link(); ?>&nbsp;</div>
+		<div class="next-post-link g6 right">&nbsp;<?php next_post_link(); ?></div>
+	</div>
 </div>
 <?php endif; ?>

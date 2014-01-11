@@ -423,6 +423,20 @@ article {
 	}
 }
 
+.post-directional-links,
+.pagination-links {
+	padding:1em 0;
+	border: solid @linecolor;
+	border-width:1px 0;
+	font-family:@sans;
+	a {
+		text-decoration:none;
+	}
+	&:after {
+		.clearfixed;
+	}
+}
+
 // Comments
 #content-comments {
 	h2 .count {
