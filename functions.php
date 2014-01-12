@@ -9,6 +9,44 @@ Functions file
 
 */
 
+// Add custom post types
+function create_post_type() {
+	// set labels
+	$labels = array(
+		'name'                => __('Resources'),
+		'singular_name'       => __('Resource'),
+		'menu_name'           => __('Resource'),
+		'parent_item_colon'   => __('Parent Resource:'),
+		'all_items'           => __('All Resources'),
+		'view_item'           => __('View Resource'),
+		'add_new_item'        => __('Add New Resource'),
+		'add_new'             => __('New Resource'),
+		'edit_item'           => __('Edit Resource'),
+		'update_item'         => __('Update Resource'),
+		'search_items'        => __('Search resources'),
+		'not_found'           => __('No resources found'),
+		'not_found_in_trash'  => __('No resources found in Trash'),
+	);
+
+	// setup args
+	$args = array(
+		'labels' 			=> $labels,
+		'supports' 			=> array('title', 'editor', 'excerpt', 'thumbnail', 'comments'),
+		'menu_position' 	=> 5,
+		'public' 			=> true,
+		'has_archive' 		=> true,
+		'rewrite' 			=> array('slug' => 'resources'),
+	);
+
+	// make the post type
+	register_post_type('readium_resource', $args);
+}
+add_action('init', 'create_post_type');
+
+// Enable post thumbnails
+add_theme_support('post-thumbnails'); 
+add_image_size('resource-thumb', 340, 800);
+
 // Add menus
 if (function_exists('register_nav_menu')) {
 	register_nav_menu('primary', 'Main Menu');

@@ -11,16 +11,32 @@ Main template file
 
 ?>
 
+<?php
+$is_resource = is_post_type_archive('readium_resource');
+?>
 <?php get_header(); ?>
 
 					<div id="content-body">
 
 						<div class="grid">
-							<div class="g12<?php echo (!is_singular()) ? ' listing' : ''; ?>">
+							<?php
+								$classes = array();
+								if (!is_singular()) {
+									array_push($classes, 'listing');
+								}
+								if ($is_resource) {	
+									array_push($classes, 'resources');
+								}
+							?>
+							<div class="g12 <?php echo implode(' ', $classes); ?>">
 								
 								<?php if (have_posts()) : ?>
 
-									<?php if (is_archive() || is_home()) get_template_part('partials/archiveheading'); ?>
+								<?php if (is_archive() || is_home()) get_template_part('partials/archiveheading'); ?>
+
+								<?php if ($is_resource) : ?>
+								<div id="resources_holder" class="row">
+								<?php endif;?>
 
 									<?php /* Start the Loop */ ?>
 									<?php while (have_posts()) : the_post(); ?>
@@ -29,18 +45,22 @@ Main template file
 
 									<?php endwhile; ?>
 
-									<?php // echo paginate_links(); ?>
+								<?php if ($is_resource) : ?>
+								</div>
+								<?php endif;?>
 
-									<?php if (!is_singular()) : ?>
-									<div class="pagination-links">
-										<?php if (get_next_posts_link() != '') :?>
-										<div class="nav-previous left"><?php next_posts_link( '&larr; Older posts' ); ?></div>
-										<?php endif; ?>
-										<?php if (get_previous_posts_link() != '') :?>
-										<div class="nav-next right"><?php previous_posts_link( 'Newer posts &rarr;' ); ?></div>
-										<?php endif; ?>
-									</div>
+								<?php if (!is_singular()) : ?>
+								<?php if (get_next_posts_link() != '' && get_previous_posts_link() != '') : ?>
+								<div class="pagination-links">
+									<?php if (get_next_posts_link() != '') :?>
+									<div class="nav-previous left"><?php next_posts_link('&larr; Older posts'); ?></div>
 									<?php endif; ?>
+									<?php if (get_previous_posts_link() != '') :?>
+									<div class="nav-next right"><?php previous_posts_link('Newer posts &rarr;'); ?></div>
+									<?php endif; ?>
+								</div>
+								<?php endif; ?>
+								<?php endif; ?>
 	
 								<?php else : ?>
 

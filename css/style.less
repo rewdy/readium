@@ -316,9 +316,28 @@ article {
 			margin-bottom:1em;
 		}
 	}
+	&.readium_resource {
+		padding-bottom:1em;
+		border-bottom:1px solid @linecolor;
+		font-family:@sans;
+		h2 {
+			font-size:1em;
+		}
+		p {
+			font-size:@small;
+		}
+
+	}
 	&.comment {
 		padding-bottom:@lineheight;
 		border-bottom:1px solid @linecolor;
+	}
+
+	// post content
+	.post-content {
+		&:after {
+			.clearfixed;
+		}
 	}
 
 	// details (i.e. meta, date, etc.)
@@ -432,17 +451,20 @@ article {
 
 	// Image alignment classes. These are from the wordpress codex.
 	img.alignright,
-	a img.alignright {
+	a img.alignright,
+	div.alignright img {
 		float:right; 
 		margin:0 0 1em 1em;
 	}
 	img.alignleft,
-	a img.alignleft {
+	a img.alignleft,
+	div.alignleft img {
 		float:left;
 		margin:0 1em 1em 0;
 	}
 	img.aligncenter,
-	a img.aligncenter {
+	a img.aligncenter,
+	div.aligncenter img {
 		display:block;
 		margin-left:auto;
 		margin-right:auto;
@@ -492,6 +514,7 @@ article {
 
 .post-directional-links,
 .pagination-links {
+	clear:left;
 	padding:1em 0;
 	border: solid @linecolor;
 	border-width:1px 0;

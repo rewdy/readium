@@ -33,8 +33,9 @@ if (is_home()) {
 	}
 
 } else {
-
-	if (is_category()) {
+	if (is_post_type_archive('readium_resource')) {
+		$listing_heading = 'Resources';
+	} else if (is_category()) {
 		$the_category = single_cat_title('', false);
 		if ($the_category == 'Uncategorized') {
 			$listing_heading = 'Uncategorized posts';
