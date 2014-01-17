@@ -54,7 +54,7 @@ Header template file
 			<div id="page">
 				<div id="wrapper">
 					
-					<header id="site-header"<?php echo (get_header_image()=='') ? ' class="no-image"' : ''; ?>>
+					<header id="site-header"<?php echo (get_header_image()=='') ? ' class="no-image"' : ' style="background-image:url(' . get_header_image() . ')"'; ?>>
 						<div id="site-header-overlay">
 							<div class="grid">
 								<div id="site-header-text" class="g12 text-center">
@@ -68,7 +68,7 @@ Header template file
 								</div>
 							</div>
 						</div>
-						<div id="deco" style="background-image:url(<?php header_image(); ?>)">
+						<div id="spacer">
 							<!-- Image not visible but used for sizing -->
 							<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 						</div>

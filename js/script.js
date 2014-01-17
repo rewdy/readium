@@ -42,7 +42,7 @@ $(window).load(function(){
 		$(window).scroll(function(){
 			if (window.pageTop < header_height) {
 				backgroundOffset = Math.abs(window.pageTop/2) * -1;
-				$('#deco').css('background-position', 'center ' + backgroundOffset + 'px');
+				$('#site-header').css('background-position', 'center ' + backgroundOffset + 'px');
 			}
 		});
 	}
