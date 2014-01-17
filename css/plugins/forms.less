@@ -71,14 +71,29 @@ input[type=password],
 textarea,
 select {
 	font-size:1rem;
-	font-family: @font;
+	font-family:@sans;
 	color:@color;
 	padding:0.5em;
 	border:1px solid darken(@linecolor, 10%);
 	box-shadow:inset 0 1px 3px rgba(0,0,0,0.1);
 	outline: none;
+	.transition;
 	&:focus {
 		border-color: #666;
+	}
+}
+#drawer {
+	input[type=text],
+	input[type=password],
+	textarea,
+	select {
+		color:#ccc;
+		border:1px solid @color;
+		background-color:lighten(@color, 10%);
+		&:focus {
+			background-color:lighten(@color, 15%);
+			border-color:#111;
+		}
 	}
 }
 input[type=text],
