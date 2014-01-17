@@ -58,6 +58,17 @@ if (is_home()) {
 
 
 ?>
+<?php if (is_author()) : ?>
+
+<!-- Post Author -->
+<div class="author-heading">
+	<span class="avatar"><?php echo get_avatar(get_the_author_meta('ID'), 100); ?></span>
+	<h1 class="author-archive"><span class="assistive-text">Posts published by </span><?php the_author(); ?></h1>
+	<div class="author-desc"><?php the_author_meta('description'); ?></div>
+</div>
+
+<?php else : ?>
+
 
 <h1><?php echo $listing_heading; ?></h1>
 
@@ -65,5 +76,7 @@ if (is_home()) {
 	<?php if (category_description()!='') : ?>
 	<p class="category-description attn"><?php echo category_description(); ?></p>
 	<?php endif; ?>
+<?php endif; ?>
+
 <?php endif; ?>
 

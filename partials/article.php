@@ -21,14 +21,6 @@ Article default template file
 	<h1><?php the_title(); ?></h1>
 	<?php endif;?>
 
-	<?php /*if (is_singular()) : ?>
-	<!-- Post Author -->
-	<div class="authorship clearfix">
-		<span class="avatar"><?php echo get_avatar(get_the_author_meta('ID'), 32); ?></span>
-		<span class="post-author vcard"><?php printf(__('<span class="says">Posted by</span> <cite class="fn">%s</cite>'), get_author_posts_link()); ?></span>
-	</div>
-	<?php endif; */?>
-
 	<!-- Post Content -->
 	<?php if (!is_singular()) : ?>
 	<?php the_excerpt(); ?>
