@@ -59,7 +59,7 @@ Header template file
 							<div class="grid">
 								<div id="site-header-text" class="g12 text-center">
 									<?php $title_tag = (!is_single()) ? 'h1' : 'div'; ?>
-									<<?php echo $title_tag; ?> id="site-title"><a href="<?php echo site_url(); ?>"><?php bloginfo('name'); ?></a></<?php echo $title_tag; ?>>
+									<<?php echo $title_tag; ?> id="site-title"><a href="<?php echo site_url(); ?>"><i class="fa fa-home"></i><?php bloginfo('name'); ?></a></<?php echo $title_tag; ?>>
 
 									<?php if (get_bloginfo('description') != '') : ?>
 									<div id="site-tagline"><?php bloginfo('description'); ?></div>
