@@ -10,39 +10,56 @@ Resource default template file
 * Called from within the loop. Will not work otherwise. *
 
 */
+
+
+$is_column = (!is_singular('readium_resource') && !is_search()) ? true : false;
+
 ?>
 
-<?php if (!is_singular('readium_resource')) : ?>
+<?php if ($is_column) : ?>
 <div class="g4 resource_holder">
 <?php endif; ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 		<!-- Post Title -->
-		<?php if (!is_singular('readium_resource')) :?>
-		<?php if (has_post_thumbnail()) : ?>
-		<div class="thumbnail"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_post_thumbnail('resource-thumbnail'); ?></a></div>
-		<?php endif; ?>
-		<h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-		<?php else : ?>
-		<h1><?php the_title(); ?></h1>
+		<?php if ($is_column) : // column display ?>
+
+			<?php if (has_post_thumbnail()) : ?>
+			<div class="thumbnail"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_post_thumbnail('resource-thumbnail'); ?></a></div>
+			<?php endif; ?>
+			<h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<?php the_excerpt(); ?>
+
+		<?php elseif (is_single()) : // single resource view ?>
+
+			<h1><?php the_title(); ?></h1>
+
+			<?php if (has_post_thumbnail()) : ?>
+			<div class="thumbnail large alignleft"><?php the_post_thumbnail('medium'); ?></div>
+			<?php endif; ?>
+
+			<div class="post-content">
+			
+			<?php the_content(); ?>
+
+			<?php wp_link_pages(array('before' => '<div class="page-links">' . __('Pages') . ':', 'after' => '</div>')); ?>
+			
+			</div>
+
+		<?php else : // any other place it might show up ?>
+
+			<h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+
+			<?php if (has_post_thumbnail()) : ?>
+			<div class="thumbnail large alignleft"><?php the_post_thumbnail('medium'); ?></div>
+			<?php endif; ?>
+
+			<div class="post-content">
+				<?php the_excerpt(); ?>
+			</div>
+
 		<?php endif;?>
-
-		<!-- Post Content -->
-		<?php if (!is_singular('readium_resource')) : ?>
-		<?php the_excerpt(); ?>
-		<?php else : ?>
-		
-		<?php if (has_post_thumbnail()) : ?>
-		<div class="thumbnail large alignleft"><?php the_post_thumbnail('medium'); ?></div>
-		<?php endif; ?>
-
-		<div class="post-content">
-		<?php the_content(); ?>
-		<?php wp_link_pages(array('before' => '<div class="page-links">' . __('Pages') . ':', 'after' => '</div>')); ?>
-		</div>
-		
-		<?php endif; ?>
 
 		<!-- Post Links -->
 		<div class="links">
@@ -73,7 +90,7 @@ Resource default template file
 
 	</article>
 
-<?php if (!is_singular('readium_resource')) : ?>
+<?php if ($is_column) : ?>
 </div>
 <?php endif; ?>
 
