@@ -100,7 +100,8 @@ body {
 		-ms-box-sizing:border-box;
 		box-sizing:border-box;
 		#drawer-content {
-
+			height:100%;
+			overflow:auto;
 		}
 	}
 	#page {
@@ -325,18 +326,6 @@ article {
 			margin-bottom:1em;
 		}
 	}
-	&.readium_resource {
-		padding-bottom:1em;
-		border-bottom:1px solid @linecolor;
-		font-family:@sans;
-		h2 {
-			font-size:1em;
-		}
-		p {
-			font-size:@small;
-		}
-
-	}
 	&.comment {
 		padding-bottom:@lineheight;
 		border-bottom:1px solid @linecolor;
@@ -500,6 +489,19 @@ article {
 			font-size:@small;
 			font-style:italic;
 		}
+	}
+}
+
+// readium columned articles
+.resource_holder article.readium_resource {
+	padding-bottom:1em;
+	border-bottom:1px solid @linecolor;
+	font-family:@sans;
+	h2 {
+		font-size:1em;
+	}
+	p {
+		font-size:@small;
 	}
 }
 
