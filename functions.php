@@ -53,6 +53,15 @@ if (function_exists('register_nav_menu')) {
 	register_nav_menu('footer', 'Footer Menu');
 }
 
+// Set the limit for resources archive
+function readium_query_mod($query) {
+	if ($query->is_post_type_archive('readium_resource') && !is_admin()) {
+		$query->set('posts_per_page', 9);
+        return;
+	}
+}
+add_action('pre_get_posts','readium_query_mod');
+
 // Add widget areas
 function readium_widget_init() {
 	// Register drawer widgets
