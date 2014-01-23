@@ -233,26 +233,64 @@ add_filter('comment_form_defaults', 'readium_comment_form');
 */
 
 // Function(s) to generate a list of links for sharing
-function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = 'fa fa-') {
+function get_share_links($url, $title, $media_url='', $class = 'sharing-list', $icon_prefix = 'fa fa-') {
 
-	$url = urlencode($url);
-	$title = urlencode($title);
+	if (isset($url) && isset($title)) {
+		$url = urlencode($url);
+		$title = urlencode($title);
+		$media_url = urlencode($media_url);
 
-	$output = '';
-	$output .= '<ul class="' . $class . '">' . "\n";
-	$output .= "\t" . '<li><a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]={{title}}&amp;p[url]={{url}}" class="facebook"><i class="{{icon_prefix}}facebook"></i> <span class="text">Facebook</span></a></li>' . "\n";
-	$output .= "\t" . '<li><a href="https://twitter.com/intent/tweet?url={{url}}&amp;text={{title}}" class="twitter"><i class="{{icon_prefix}}twitter"></i> <span class="text">Twitter</span></a></li>' . "\n";
-	$output .= "\t" . '<li><a href="https://alpha.app.net/intent/post?url={{url}}&amp;text={{title}}" class="adn"><i class="{{icon_prefix}}adn"></i> <span class="text">App.net</span></a></li>' . "\n";
-	$output .= "\t" . '<li><a href="https://plus.google.com/share?url={{url}}" class="gplus"><i class="{{icon_prefix}}google-plus"></i> <span class="text">Google +</span></a></li>' . "\n";
-	$output .= "\t" . '<li><a href="mailto:?&amp;Subject={{title}}&amp;Body={{url}}" class="email"><i class="{{icon_prefix}}envelope"></i> <span class="text">Email</span></a></li>' . "\n";
-	$output .= '</ul>';
+		$services['facebook'] = array(
+			'label' => 'Facebook',
+			'url'	=> 'http://www.facebook.com/sharer.php?s=100&amp;p[title]={{title}}&amp;p[url]={{url}}',
+			'icon'	=> 'facebook',
+		);
+		$services['twitter'] = array(
+			'label' => 'Twitter',
+			'url'	=> 'https://twitter.com/intent/tweet?url={{url}}&amp;text={{title}}',
+			'icon'	=> 'twitter',
+		);
+		if ($media_url!='') {
+			$services['pinterest'] = array(
+				'label'	=> 'Pinterest',
+				'url'	=> 'http://www.pinterest.com/pin/create/bookmarklet/?media={{media_url}}&url={{url}}&description={{title}}',
+				'icon'	=> 'pinterest',
+			);
+		}
+		$services['gplus'] = array(
+			'label'	=> 'Google +',
+			'url'	=> 'https://plus.google.com/share?url={{url}}',
+			'icon'	=> 'google-plus',
+		);
+		// $services['adn'] = array(
+		// 	'label'	=> 'App.net',
+		// 	'url'	=> 'https://alpha.app.net/intent/post?url={{url}}&amp;text={{title}}',
+		// 	'icon'	=> 'adn',
+		// );
+		$services['email']	= array(
+			'label'	=> 'Email',
+			'url'	=> 'mailto:?&amp;Subject={{title}}&amp;Body={{url}}',
+			'icon'	=> 'envelope',
+		);
 
-	$output = preg_replace('/{{url}}/', $url, $output);
-	$output = preg_replace('/{{title}}/', $title, $output);
-	$output = preg_replace('/{{icon_prefix}}/', $icon_prefix, $output);
+		// build the output
+		$output = '<ul class="' . $class . '">' . "\n";
+		foreach ($services as $key => $service) {
+			$output .= "\t" . '<li><a href="'.$service[url].'" class="'.$key.'"><i class="{{icon_prefix}}'.$service[icon].'"></i> <span class="text">'.$service[label].'</span></a></li>' . "\n";
+		}
+		$output .= '</ul>';
 
-	return $output;
+		$output = preg_replace('/{{url}}/', $url, $output);
+		$output = preg_replace('/{{title}}/', $title, $output);
+		$output = preg_replace('/{{media_url}}/', $media_url, $output);
+		$output = preg_replace('/{{icon_prefix}}/', $icon_prefix, $output);
+
+		return $output;
+	} else {
+		// not enought data. return empty string.
+		return '';
+	}
 }
-function share_links($url, $title, $class = 'sharing-list', $icon_prefix = 'fa fa-') {
-	echo get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = 'fa fa-');
+function share_links($url, $title, $media_url='', $class = 'sharing-list', $icon_prefix = 'fa fa-') {
+	echo get_share_links($url, $title, $media_url, $class, $icon_prefix);
 }
