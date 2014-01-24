@@ -50,9 +50,7 @@ Article default template file
 	<?php if (is_singular()) : ?>
 	<div class="sharing">
 		<div class="sharing-heading">Share</div>
-		<?php $thumbnail_url = (has_post_thumbnail()) ? wp_get_attachment_url(get_post_thumbnail_id()) : ''; ?>
-		<?php echo $thumbnail_url; ?>
-		<?php share_links(get_permalink(), get_the_title(), $thumbnail_url); ?>
+		<?php share_links(get_permalink(), get_the_title(), get_media_url(get_the_ID())); ?>
 	</div>
 	<?php endif; ?>
 
