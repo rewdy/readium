@@ -246,7 +246,8 @@ function get_media_url($post_id = 0) {
 			));
 			if (!empty($attachments)) {
 				foreach ($attachments as $attachment_id => $attachment) {
-					$media_url = wp_get_attachment_url($attachments_id);
+					$media_url = wp_get_attachment_image_src($attachments_id);
+					$media_url = $media_url[0];
 				}
 			}
 		}
