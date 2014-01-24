@@ -13,18 +13,18 @@ Functions file
 function create_post_type() {
 	// set labels
 	$labels = array(
-		'name'                => __('Resources'),
-		'singular_name'       => __('Resource'),
-		'menu_name'           => __('Resource'),
+		'name'				=> __('Resources'),
+		'singular_name'	   => __('Resource'),
+		'menu_name'		   => __('Resource'),
 		'parent_item_colon'   => __('Parent Resource:'),
-		'all_items'           => __('All Resources'),
-		'view_item'           => __('View Resource'),
-		'add_new_item'        => __('Add New Resource'),
-		'add_new'             => __('New Resource'),
-		'edit_item'           => __('Edit Resource'),
-		'update_item'         => __('Update Resource'),
-		'search_items'        => __('Search resources'),
-		'not_found'           => __('No resources found'),
+		'all_items'		   => __('All Resources'),
+		'view_item'		   => __('View Resource'),
+		'add_new_item'		=> __('Add New Resource'),
+		'add_new'			 => __('New Resource'),
+		'edit_item'		   => __('Edit Resource'),
+		'update_item'		 => __('Update Resource'),
+		'search_items'		=> __('Search resources'),
+		'not_found'		   => __('No resources found'),
 		'not_found_in_trash'  => __('No resources found in Trash'),
 	);
 
@@ -57,7 +57,7 @@ if (function_exists('register_nav_menu')) {
 function readium_query_mod($query) {
 	if ($query->is_post_type_archive('readium_resource') && !is_admin()) {
 		$query->set('posts_per_page', 9);
-        return;
+		return;
 	}
 }
 add_action('pre_get_posts','readium_query_mod');
@@ -202,24 +202,24 @@ function readium_comment_form() {
 		'<span class="input-holder"><input id="author" name="author" type="text" class="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></span></p>',
 		'email'  => '<p class="form-item label-inline comment-form-email"><label for="email">' . __( 'Email' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
 		'<span class="input-holder"><input id="email" name="email" type="text" class="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></span></p>',
-		'url'    => '<p class="form-item label-inline comment-form-url"><label for="url">' . __( 'Website' ) . '</label>' .
+		'url'	=> '<p class="form-item label-inline comment-form-url"><label for="url">' . __( 'Website' ) . '</label>' .
 		'<span class="input-holder"><input id="url" name="url" type="text" class="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></span></p>',
 	);
 	
 	// build our new defaults array (based off of default defaults. customized values noted.
 	$defaults = array(
-		'fields'               => apply_filters('comment_form_default_fields', $fields ), /* customized */
-		'comment_field'        => '<p class="form-item comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><span class="input-holder"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></span></p>', /* customized */
-		'must_log_in'          => '<p class="must-log-in help">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
-		'logged_in_as'         => '<p class="logged-in-as help">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
-		'comment_notes_before' => '<p class="comment-notes help">' . __( 'Your email address will not be published.' ) . ( $req ? $required_text : '' ) . '</p>',
-		'comment_notes_after'  => '<p class="some-html-allowed help small">' . sprintf(__('Some <abbr title="Hyper Text Markup Language">HTML</abbr> allowed: <code>%s</code>'), allowed_tags()) . '</p>', /* customized */
-		'id_form'              => 'commentform',
-		'id_submit'            => 'submit',
-		'title_reply'          => __( 'Leave a Comment' ),
-		'title_reply_to'       => __( 'Leave a Reply to %s' ),
-		'cancel_reply_link'    => __( 'Cancel Comment' ),
-		'label_submit'         => __( 'Post Comment' )
+		'fields'			=> apply_filters('comment_form_default_fields', $fields ), /* customized */
+		'comment_field'		=> '<p class="form-item comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><span class="input-holder"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></span></p>', /* customized */
+		'must_log_in'			=> '<p class="must-log-in help">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
+		'logged_in_as'			=> '<p class="logged-in-as help">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
+		'comment_notes_before'	=> '<p class="comment-notes help">' . __( 'Your email address will not be published.' ) . ( $req ? $required_text : '' ) . '</p>',
+		'comment_notes_after'	=> '<p class="some-html-allowed help small">' . sprintf(__('Some <abbr title="Hyper Text Markup Language">HTML</abbr> allowed: <code>%s</code>'), allowed_tags()) . '</p>', /* customized */
+		'id_form'				=> 'commentform',
+		'id_submit'				=> 'submit',
+		'title_reply'			=> __( 'Leave a Comment' ),
+		'title_reply_to'		=> __( 'Leave a Reply to %s' ),
+		'cancel_reply_link'		=> __( 'Cancel Comment' ),
+		'label_submit'			=> __( 'Post Comment' )
 	);
 	
 	// send them back out! Bam!
@@ -231,7 +231,6 @@ add_filter('comment_form_defaults', 'readium_comment_form');
 /**
  * Functions available in templates
 */
-
 // Function(s) to generate a list of links for sharing
 function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = 'fa fa-') {
 	if (isset($url) && isset($title)) {
@@ -250,7 +249,7 @@ function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = '
 		);
 		$services['pinterest'] = array(
 			'label'	=> 'Pinterest',
-			'url'	=> '//www.pinterest.com/pin/create/button/',
+			'url'	=> 'http://www.pinterest.com/pin/create/bookmarklet/?url={{url}}&description={{title}}',
 			'icon'	=> 'pinterest',
 		);
 		$services['gplus'] = array(
@@ -279,7 +278,6 @@ function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = '
 
 		$output = preg_replace('/{{url}}/', $url, $output);
 		$output = preg_replace('/{{title}}/', $title, $output);
-		$output = preg_replace('/{{media_url}}/', $media_url, $output);
 		$output = preg_replace('/{{icon_prefix}}/', $icon_prefix, $output);
 
 		return $output;
