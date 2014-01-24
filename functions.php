@@ -233,12 +233,10 @@ add_filter('comment_form_defaults', 'readium_comment_form');
 */
 
 // Function(s) to generate a list of links for sharing
-function get_share_links($url, $title, $media_url='', $class = 'sharing-list', $icon_prefix = 'fa fa-') {
-
+function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = 'fa fa-') {
 	if (isset($url) && isset($title)) {
 		$url = urlencode($url);
 		$title = urlencode($title);
-		$media_url = urlencode($media_url);
 
 		$services['facebook'] = array(
 			'label' => 'Facebook',
@@ -250,13 +248,11 @@ function get_share_links($url, $title, $media_url='', $class = 'sharing-list', $
 			'url'	=> 'https://twitter.com/intent/tweet?url={{url}}&amp;text={{title}}',
 			'icon'	=> 'twitter',
 		);
-		if ($media_url!='') {
-			$services['pinterest'] = array(
-				'label'	=> 'Pinterest',
-				'url'	=> 'http://www.pinterest.com/pin/create/bookmarklet/?media={{media_url}}&url={{url}}&description={{title}}',
-				'icon'	=> 'pinterest',
-			);
-		}
+		$services['pinterest'] = array(
+			'label'	=> 'Pinterest',
+			'url'	=> '//www.pinterest.com/pin/create/button/',
+			'icon'	=> 'pinterest',
+		);
 		$services['gplus'] = array(
 			'label'	=> 'Google +',
 			'url'	=> 'https://plus.google.com/share?url={{url}}',
@@ -276,7 +272,8 @@ function get_share_links($url, $title, $media_url='', $class = 'sharing-list', $
 		// build the output
 		$output = '<ul class="' . $class . '">' . "\n";
 		foreach ($services as $key => $service) {
-			$output .= "\t" . '<li><a href="'.$service[url].'" class="'.$key.'"><i class="{{icon_prefix}}'.$service[icon].'"></i> <span class="text">'.$service[label].'</span></a></li>' . "\n";
+			$extra = (isset($service['extra'])) ? ' '.$service['extra'] : '';
+			$output .= "\t" . '<li><a href="'.$service[url].'" class="'.$key.'"'.$extra.'><i class="{{icon_prefix}}'.$service[icon].'"></i> <span class="text">'.$service[label].'</span></a></li>' . "\n";
 		}
 		$output .= '</ul>';
 
@@ -291,6 +288,6 @@ function get_share_links($url, $title, $media_url='', $class = 'sharing-list', $
 		return '';
 	}
 }
-function share_links($url, $title, $media_url='', $class = 'sharing-list', $icon_prefix = 'fa fa-') {
-	echo get_share_links($url, $title, $media_url, $class, $icon_prefix);
+function share_links($url, $title, $class = 'sharing-list', $icon_prefix = 'fa fa-') {
+	echo get_share_links($url, $title, $class, $icon_prefix);
 }

@@ -70,9 +70,14 @@ $(window).load(function(){
 });
 
 function enableSharing() {
-	$('.sharing-list a').not('.email').click(function(){
+	$('.sharing-list a').not('.email, .pinterest').click(function(){
 		href = $(this).attr('href');
 		openWindow(href, 'Share');
+		return false;
+	});
+	$('.sharing-list a.pinterest').click(function(){
+		faLoadingIndicator($(this), 'fa-pinterest', 2000);
+		pinterestPinIt();
 		return false;
 	});
 }
@@ -88,4 +93,22 @@ function openWindow(url, title) {
 		title, // window name
 		'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height='+winHeight+', width='+winWidth+', left='+left+', top='+top
 	);
+}
+// pinterest action
+function pinterestPinIt() {
+	var e = document.createElement('script');
+	e.setAttribute('type','text/javascript');
+	e.setAttribute('charset','UTF-8');
+	e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+	document.body.appendChild(e);
+}
+
+function faLoadingIndicator($el, iconClass, duration) {
+	$icon = $el.find('.fa');
+	$icon.removeClass(iconClass);
+	$icon.addClass('fa-spinner').addClass('fa-spin');
+	setTimeout(function(){
+		$icon.removeClass('fa-spinner').removeClass('fa-spin');
+		$icon.addClass(iconClass);
+	}, duration);
 }
