@@ -330,9 +330,12 @@ header#site-header {
 		width:100%;
 		z-index:2;
 	}
-	#spacer img {
-		display:block;
-		visibility:hidden;
+	#spacer {
+		.linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3));
+		img {
+			display:block;
+			visibility:hidden;
+		}
 	}
 	&.no-image {
 		background-color:lighten(@color, 10%);
@@ -445,14 +448,7 @@ article {
 		padding-top:1em;
 		border-top:1px solid @linecolor;
 		background: transparent; /* Old browsers */
-		background: -moz-linear-gradient(top,  #f2f2f2 0%, #ffffff 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top,  #f2f2f2 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top,  #f2f2f2 0%,#ffffff 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top,  #f2f2f2 0%,#ffffff 100%); /* IE10+ */
-		background: linear-gradient(to bottom,  #f2f2f2 0%,#ffffff 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-
+		.linear-gradient(#f2f2f2, #fff);
 		.sharing-heading {
 			margin:-1em 0 0.5em 0;
 			text-align:center;
@@ -789,4 +785,15 @@ footer#site-footer {
 	-moz-box-sizing:border-box;
 	-ms-box-sizing:border-box;
 	box-sizing:border-box;
+}
+.linear-gradient(@start: #fff, @stop: #000) {
+	background: -moz-linear-gradient(top, @start 0%, @stop 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@start), color-stop(100%,@stop));
+	background: -webkit-linear-gradient(top, @start 0%, @stop 100%);
+	background: -o-linear-gradient(top, @start 0%, @stop 100%);
+	background: -ms-linear-gradient(top, @start 0%, @stop 100%);
+	background: linear-gradient(to bottom, @start 0%, @stop 100%);
+	@ieStart: argb(@start);
+	@ieStop: argb(@stop);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@{ieStart}', endColorstr='@{ieStop}',GradientType=0);
 }
