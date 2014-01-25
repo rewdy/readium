@@ -14,18 +14,18 @@ function create_post_type() {
 	// set labels
 	$labels = array(
 		'name'				=> __('Resources'),
-		'singular_name'	   => __('Resource'),
-		'menu_name'		   => __('Resource'),
-		'parent_item_colon'   => __('Parent Resource:'),
-		'all_items'		   => __('All Resources'),
-		'view_item'		   => __('View Resource'),
+		'singular_name'		=> __('Resource'),
+		'menu_name'			=> __('Resource'),
+		'parent_item_colon' => __('Parent Resource:'),
+		'all_items'			=> __('All Resources'),
+		'view_item'			=> __('View Resource'),
 		'add_new_item'		=> __('Add New Resource'),
-		'add_new'			 => __('New Resource'),
-		'edit_item'		   => __('Edit Resource'),
-		'update_item'		 => __('Update Resource'),
+		'add_new'			=> __('New Resource'),
+		'edit_item'			=> __('Edit Resource'),
+		'update_item'		=> __('Update Resource'),
 		'search_items'		=> __('Search resources'),
-		'not_found'		   => __('No resources found'),
-		'not_found_in_trash'  => __('No resources found in Trash'),
+		'not_found'			=> __('No resources found'),
+		'not_found_in_trash'=> __('No resources found in Trash'),
 	);
 
 	// setup args
@@ -44,8 +44,11 @@ function create_post_type() {
 add_action('init', 'create_post_type');
 
 // Enable post thumbnails
-add_theme_support('post-thumbnails'); 
+add_theme_support('post-thumbnails');
+
+// Add some image sizes for post thumbnails
 add_image_size('resource-thumb', 340, 800);
+add_image_size('page-header', 1600, 700, true);
 
 // Add menus
 if (function_exists('register_nav_menu')) {
@@ -93,52 +96,12 @@ function readium_widget_init() {
 add_action('widgets_init', 'readium_widget_init');
 
 // Custom Header Image
-$header_args = array(
-	'default-image'	=> '%s/img/headers/railroad.jpg',
-	'width'			=> 2000,
-	'height'		=> 800,
-	'flex-height' 	=> true,
-	'flex-width'	=> false,
-	'uploads'		=> true,
-);
-add_theme_support('custom-header', $header_args);
-
-// Custom Header Options
-$header_options = array(
-	'railroad' 		=> array(
-		'url' 			=> '%s/img/headers/railroad.jpg',
-		'thumbnail_url'	=> '%s/img/headers/railroad-thumbnail.jpg',
-		'description' 	=> __('Railroad Beach'),
-	),
-	'treedlane' 	=> array(
-		'url' 			=> '%s/img/headers/treed-lane.jpg',
-		'thumbnail_url'	=> '%s/img/headers/treed-lane-thumbnail.jpg',
-		'description' 	=> __('Treed Lane'),
-	),
-	'skyrose' 		=> array(
-		'url' 			=> '%s/img/headers/sky-rose.jpg',
-		'thumbnail_url'	=> '%s/img/headers/sky-rose-thumbnail.jpg',
-		'description' 	=> __('Roses in the Sky'),
-	),
-	'sunrisefield' 	=> array(
-		'url' 			=> '%s/img/headers/sunrise-field.jpg',
-		'thumbnail_url'	=> '%s/img/headers/sunrise-field-thumbnail.jpg',
-		'description' 	=> __('Sunrise over a Field'),
-	),
-	'hiker' 	=> array(
-		'url' 			=> '%s/img/headers/hiker.jpg',
-		'thumbnail_url'	=> '%s/img/headers/hiker-thumbnail.jpg',
-		'description' 	=> __("Hiker's Triumph"),
-	),
-);
-register_default_headers($header_options);
+include "lib/custom-header.php";
 
 // Content width
 if (!isset($content_width)) {
 	$content_width = 864;
 }
-
-//
 
 // Add automatic feed links
 add_theme_support('automatic-feed-links');

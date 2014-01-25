@@ -54,8 +54,10 @@ Header template file
 
 			<div id="page">
 				<div id="wrapper">
-					
-					<header id="site-header"<?php echo (get_header_image()=='') ? ' class="no-image"' : ' style="background-image:url(' . get_header_image() . ')"'; ?>>
+					<?php
+						$header_image = readium_custom_header_image();
+					?>
+					<header id="site-header"<?php echo (!$header_image) ? ' class="no-image"' : ' style="background-image:url(' . $header_image['url'] . ')"'; ?>>
 						<div id="site-id">
 							<div class="grid">
 								<div class="g12 text-center">
@@ -77,9 +79,11 @@ Header template file
 							</div>
 						</div>
 						<?php endif; ?>
+						<?php if ($header_image) : ?>
 						<div id="spacer">
 							<!-- Image not visible but used for sizing -->
-							<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+							<img src="<?php echo $header_image['url']; ?>" width="<?php echo $header_image['width']; ?>" height="<?php echo $header_image['height']; ?>" alt="" />
 						</div>
+						<?php endif; ?>
 					</header>
 					
