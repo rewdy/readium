@@ -29,6 +29,7 @@ Header template file
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" type="text/css" />
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Amatic+SC:400,700" type="text/css" />
         <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
 
 		<!-- Javascript -->
@@ -55,6 +56,14 @@ Header template file
 				<div id="wrapper">
 					
 					<header id="site-header"<?php echo (get_header_image()=='') ? ' class="no-image"' : ' style="background-image:url(' . get_header_image() . ')"'; ?>>
+						<!-- <div id="site-id">
+							<div class="grid">
+								<div class="g12 text-center">
+									<?php $title_tag = (!is_single()) ? 'h1' : 'div'; ?>
+									<<?php echo $title_tag; ?> id="site-title"><a href="<?php echo site_url(); ?>"><?php bloginfo('name'); ?></a></<?php echo $title_tag; ?>>
+								</div>
+							</div>
+						</div> -->
 						<div id="site-header-overlay">
 							<div class="grid">
 								<div id="site-header-text" class="g12 text-center">
