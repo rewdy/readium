@@ -354,6 +354,11 @@ article {
 		padding-bottom:@lineheight;
 		border-bottom:1px solid @linecolor;
 	}
+	&.attachment {
+		.attachment-caption {
+			text-align:center;
+		}
+	}
 
 	// post content
 	.post-content {
@@ -493,18 +498,19 @@ article {
 	}
 
 	// attachments, galleries, etc (i.e. images)
+	.attachment-caption,
+	.wp-caption-text {
+		font-family:@sans;
+		font-size:@small;
+		line-height:@lineheight;
+		font-style:italic;
+	}
 	div.gallery {
 		margin-bottom:@lineheight !important; // I don't believe in !importants, but this is to override a default wordpress style that doesn't make sense.
 		background-color:@screen;
 		&:after {
 			.clearfixed;
 		}
-	}
-	.wp-caption-text {
-		font-family:@sans;
-		font-size:@small;
-		line-height:@lineheight;
-		font-style:italic;
 	}
 	div[id^='attachment'] {
 		background-color:@screen;
