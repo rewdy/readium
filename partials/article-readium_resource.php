@@ -82,7 +82,7 @@ $is_column = (!is_singular('readium_resource') && !is_search()) ? true : false;
 		<?php if (is_singular('readium_resource')) : ?>
 		<div class="sharing">
 			<div class="sharing-heading">Share</div>
-			<?php share_links(get_permalink(), get_the_title(), get_media_url(get_the_ID())); ?>
+			<?php share_links(get_permalink(), get_the_title()); ?>
 		</div>
 		<?php endif; ?>
 

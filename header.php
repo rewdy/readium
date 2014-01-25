@@ -56,27 +56,27 @@ Header template file
 				<div id="wrapper">
 					
 					<header id="site-header"<?php echo (get_header_image()=='') ? ' class="no-image"' : ' style="background-image:url(' . get_header_image() . ')"'; ?>>
-						<!-- <div id="site-id">
+						<div id="site-id">
 							<div class="grid">
 								<div class="g12 text-center">
 									<?php $title_tag = (!is_single()) ? 'h1' : 'div'; ?>
 									<<?php echo $title_tag; ?> id="site-title"><a href="<?php echo site_url(); ?>"><?php bloginfo('name'); ?></a></<?php echo $title_tag; ?>>
 								</div>
 							</div>
-						</div> -->
-						<div id="site-header-overlay">
+						</div>
+						<?php if (is_singular()) : ?>
+						<div id="page-header-overlay">
 							<div class="grid">
-								<div id="site-header-text" class="g12 text-center">
-									<?php $title_tag = (!is_single()) ? 'h1' : 'div'; ?>
-									<<?php echo $title_tag; ?> id="site-title"><a href="<?php echo site_url(); ?>"><i class="fa fa-home"></i><?php bloginfo('name'); ?></a></<?php echo $title_tag; ?>>
+								<div id="page-header-text" class="g12 text-center">
+									<h1 id="page-title"><?php the_title(); ?></h1>
 
-									<?php if (get_bloginfo('description') != '') : ?>
-									<div id="site-tagline"><?php bloginfo('description'); ?></div>
-									<?php endif; ?>
+									<!-- Page subtitle? Is there such a thing? -->
+									<!-- <div id="page-tagline"><?php bloginfo('description'); ?></div> -->
 
 								</div>
 							</div>
 						</div>
+						<?php endif; ?>
 						<div id="spacer">
 							<!-- Image not visible but used for sizing -->
 							<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />

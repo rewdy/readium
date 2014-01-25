@@ -104,11 +104,13 @@ a#navigation-toggle-link:hover .text{opacity:0.6;left:140%;}
 #drawer nav ul.menu{margin:0;padding:0;}#drawer nav ul.menu li{display:block;margin:0;padding:0;list-style:none;}#drawer nav ul.menu li a{display:block;padding:0.3em 0.75em;}
 #drawer-widgets{margin:1.5em 0.75em;}#drawer-widgets .widget{margin-bottom:1em;padding:0.75em;background-color:#2f2f2f;font-size:0.8em;line-height:1.5em;}#drawer-widgets .widget h2{font-size:1.15em;text-transform:uppercase;font-weight:600;}
 #drawer-widgets .widget ul{margin:0;padding:0;}#drawer-widgets .widget ul li{margin:0 0 0.5em 1.5em;padding:0;}
-header#site-header{position:relative;min-height:14em;background-repeat:no-repeat;background-position:center top;background-size:100% auto;background-attachment:fixed;}@media only screen and (max-width:640px){header#site-header{background-attachment:scroll;background-size:auto 100%;}}header#site-header #site-header-text{text-align:center;color:#fff;}
-header#site-header #site-title{font-family:'Open Sans',sans-serif;font-size:2.5em;font-weight:700;letter-spacing:-0.05em;line-height:1.25em;margin:0 0 0.33em 0;}header#site-header #site-title a{color:inherit;text-decoration:none;}header#site-header #site-title a i.fa{display:block;opacity:0;-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-ms-transition:all 0.3s;transition:all 0.3s;}
-header#site-header #site-title a:hover i.fa{opacity:1;}
-header#site-header #site-tagline{font-family:'Open Sans',sans-serif;font-weight:400;}
-header#site-header #site-header-overlay{position:absolute;bottom:25%;left:0;width:100%;z-index:2;}
+header#site-header{position:relative;min-height:14em;background-repeat:no-repeat;background-position:center top;background-size:100% auto;background-attachment:fixed;}@media only screen and (max-width:640px){header#site-header{background-attachment:scroll;background-size:auto 100%;}}header#site-header #site-id{position:absolute;top:0;left:0;padding:1em 0;width:100%;background-color:#fff;}header#site-header #site-id #site-title{margin:0;padding:0;font-family:"Amatic SC",'Open Sans',sans-serif;font-size:2em;font-weight:700;letter-spacing:0.05em;line-height:0.75em;text-align:center;}
+header#site-header #site-id a{color:#222222;text-decoration:none;text-transform:uppercase;}
+header#site-header #page-header-text{text-align:center;color:#fff;}
+header#site-header #page-title{font-family:'Open Sans',sans-serif;font-size:2.5em;font-weight:700;letter-spacing:-0.05em;line-height:1.25em;margin:0 0 0.33em 0;}header#site-header #page-title a{color:inherit;text-decoration:none;}header#site-header #page-title a i.fa{display:block;opacity:0;-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-ms-transition:all 0.3s;transition:all 0.3s;}
+header#site-header #page-title a:hover i.fa{opacity:1;}
+header#site-header #page-tagline{font-family:'Open Sans',sans-serif;font-weight:400;}
+header#site-header #page-header-overlay{position:absolute;bottom:25%;left:0;width:100%;z-index:2;}
 header#site-header #spacer img{display:block;visibility:hidden;}
 header#site-header.no-image{background-color:#3c3c3c;}
 article{margin-bottom:2em;}article.page h1{text-align:center;margin-bottom:1em;}
@@ -123,8 +125,10 @@ article div.page-links{margin-bottom:1.5em;padding:0.25em 0.7em;background-color
 article img.alignright,article a img.alignright,article div.alignright img{float:right;margin:0 0 1em 1em;}
 article img.alignleft,article a img.alignleft,article div.alignleft img{float:left;margin:0 1em 1em 0;}
 article img.aligncenter,article a img.aligncenter,article div.aligncenter img{display:block;margin-left:auto;margin-right:auto;}
+article div.gallery{margin-bottom:1.5em !important;background-color:#f2f2f2;}article div.gallery:after{content:" ";display:block;clear:left;height:0;overflow:hidden;}
+article .wp-caption-text{font-family:'Open Sans',sans-serif;font-size:0.8em;line-height:1.5em;font-style:italic;}
 article div[id^='attachment']{background-color:#f2f2f2;margin-bottom:1.5em;width:auto!important;}article div[id^='attachment'].alignnone{margin-left:-150px;}@media only screen and (max-width:750px){article div[id^='attachment'].alignnone{margin-left:0;}}article div[id^='attachment'].alignnone img{display:block;}
-article div[id^='attachment'] .wp-caption-text{padding:0.5em;text-align:right;font-family:'Open Sans',sans-serif;font-size:0.8em;font-style:italic;}
+article div[id^='attachment'] .wp-caption-text{padding:0.5em;text-align:right;}
 .resource_holder article.readium_resource{padding-bottom:1em;border-bottom:1px solid #e6e6e6;font-family:'Open Sans',sans-serif;}.resource_holder article.readium_resource h2{font-size:1em;}
 .resource_holder article.readium_resource p{font-size:0.8em;}
 .listing h1{padding:0.75em 0;margin-bottom:1.5em;border:solid #e6e6e6;border-width:1px 0;font-size:0.75em;color:#bbbbbb;text-transform:uppercase;letter-spacing:0.1em;}
