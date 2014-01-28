@@ -29,7 +29,6 @@ Header template file
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" type="text/css" />
-		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Amatic+SC:400,700" type="text/css" />
         <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
 
 		<!-- Javascript -->
