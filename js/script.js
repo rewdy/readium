@@ -21,10 +21,14 @@ jQuery(function(){
 	});
 	// Drawer swipe events
 	jQuery('body').swipe({
-		swipeRight:function(e){
+		swipeRight:function(){
 			if (!jQuery('#control').hasClass('open')) {
-				e.preventDefault();
 				toggleDrawer('open');
+			}
+		},
+		swipeLeft:function(){
+			if (jQuery('#control').hasClass('open')) {
+				toggleDrawer('close');
 			}
 		},
 		threshold:100
