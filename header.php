@@ -33,16 +33,21 @@ Header template file
         <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
 
 		<!-- Javascript -->
-		<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/script.js"></script>
+		<?php
+		// pull in the jQuery
+		wp_enqueue_script('jquery');
+		// grab the touchSwipe library
+		wp_enqueue_script('jquery.touchSwipe', get_template_directory_uri() . '/js/jquery.touchSwipe-1.6.5.min.js', 'jquery', '1.6.5');
+		// pull in the site js
+		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/script.js', 'jquery');
 
-
-        <?php 
+		// comment script
         if (is_singular() && get_option('thread_comments')) :
         	wp_enqueue_script('comment-reply');
         endif;
         ?>
-        <!-- Wordpress Stuff -->
+
+        <!-- Wordpress -->
         <?php wp_head(); ?>
 
 	</head>

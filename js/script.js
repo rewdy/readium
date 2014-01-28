@@ -9,49 +9,56 @@ Readium theme javascript. Uses jQuery (obviously).
 
 */
 
-$(function(){
+jQuery(function(){
 	// Drawer toggle
-	$('#navigation-toggle-link').click(function(){
-		if ($('#control').hasClass('open')) {
-			$('#control').removeClass('open');
+	jQuery('#navigation-toggle-link').click(function(){
+		if (!jQuery('#control').hasClass('open')) {
+			toggleDrawer('open');
 		} else {
-			$('#control').addClass('open');
-			$('#page').one('click', function(){
-				$('#control').removeClass('open');
-			})
+			toggleDrawer('close');
 		}
 		return false;
 	});
+	// Drawer swipe events
+	jQuery('body').swipe({
+		swipeRight:function(e){
+			if (!jQuery('#control').hasClass('open')) {
+				e.preventDefault();
+				toggleDrawer('open');
+			}
+		},
+		threshold:100
+	});
 
 	// Set pageTop variable for other functions to use
-	window.pageTop = $('html,body').scrollTop();
-	$(window).scroll(function(){
-		window.pageTop = $(window).scrollTop();
+	window.pageTop = jQuery('html,body').scrollTop();
+	jQuery(window).scroll(function(){
+		window.pageTop = jQuery(window).scrollTop();
 	});
 
 	enableSharing();
 });
 
-$(window).load(function(){
+jQuery(window).load(function(){
 	// Various items come in the load section because if images aren't loaded, there will be issues in calculating offsets.
 
 	// Parallax effect on header image
-	var header_height = $('#site-header').not('.no-image').height();
+	var header_height = jQuery('#site-header').not('.no-image').height();
 	var backgroundOffset = 0;
 	if (header_height) {
-		$(window).scroll(function(){
+		jQuery(window).scroll(function(){
 			if (window.pageTop < header_height) {
 				backgroundOffset = Math.abs(window.pageTop/2) * -1;
-				$('#site-header').css('background-position', 'center ' + backgroundOffset + 'px');
+				jQuery('#site-header').css('background-position', 'center ' + backgroundOffset + 'px');
 			}
 		});
 	}
 
 	// Read line
-	$('.readline').each(function(){
+	jQuery('.readline').each(function(){
 		var enabled = false;
-		var line = $(this);
-		var article = $(this).closest('article');
+		var line = jQuery(this);
+		var article = jQuery(this).closest('article');
 		var articleTop = article.offset().top;
 		var articleBottom = articleTop + article.outerHeight();
 		var calculationPadding = 400; // this is extra space to add when calculating the percentage because people don't read at the top of their screens.
@@ -69,14 +76,28 @@ $(window).load(function(){
 	});
 });
 
+function toggleDrawer(way) {
+	console.log('trying to toggle. -> ' + way);
+	if (way == 'open') {
+		jQuery('#control').addClass('open');
+		setTimeout(function(){
+			jQuery('#page').one('click', function(){
+				jQuery('#control').removeClass('open');
+			});
+		},500);
+	} else if (way == 'close') {
+		jQuery('#control').removeClass('open');
+	}
+}
+
 function enableSharing() {
-	$('.sharing-list a').not('.email, .pinterest').click(function(){
-		href = $(this).attr('href');
+	jQuery('.sharing-list a').not('.email, .pinterest').click(function(){
+		href = jQuery(this).attr('href');
 		openWindow(href, 'Share');
 		return false;
 	});
-	$('.sharing-list a.pinterest').click(function(){
-		faLoadingIndicator($(this), 'fa-pinterest', 2000);
+	jQuery('.sharing-list a.pinterest').click(function(){
+		faLoadingIndicator(jQuery(this), 'fa-pinterest', 2000);
 		pinterestPinIt();
 		return false;
 	});
@@ -94,6 +115,7 @@ function openWindow(url, title) {
 		'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height='+winHeight+', width='+winWidth+', left='+left+', top='+top
 	);
 }
+
 // pinterest action
 function pinterestPinIt() {
 	var e = document.createElement('script');
@@ -103,6 +125,7 @@ function pinterestPinIt() {
 	document.body.appendChild(e);
 }
 
+// show font awesome loading indicator
 function faLoadingIndicator($el, iconClass, duration) {
 	$icon = $el.find('.fa');
 	$icon.removeClass(iconClass);
