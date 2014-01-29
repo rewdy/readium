@@ -40,7 +40,8 @@ as there is a lot of overlap between the two.
 @color: #222; // text color
 @light: #bbb; // light text
 @font: Georgia, serif; // primary font
-@hfont: 'Open Sans', sans-serif;
+//@hfont: 'Open Sans', sans-serif;
+@hfont: 'Helvetica Neue', sans-serif;
 @serif: @font;
 @sans: @hfont;
 @size: 1.125em;
@@ -283,27 +284,28 @@ header#site-header {
 		#site-title {
 			margin:0;
 			padding:0.2em 0;
-			font-family:@sans;
-			font-size:1.4em;
-			font-weight:700;
-			letter-spacing:0.05em;
+			font-family:"Novecentosanswide", @sans;
+			font-size:2em;
+			font-weight:400;
 			line-height:0.75em;
-			text-align: center;
-		}
-		a {
-			color:@color;
-			text-decoration:none;
-			text-transform:uppercase;
+			text-align:center;
+			a {
+				color:@color;
+				text-decoration:none;
+				text-transform:uppercase;
+				&:hover {
+					color:@accent;
+				}
+			}
 		}
 	}
-	
 	#page-header-text {
 		text-align:center;
 		color:#fff;
 	}
 	#page-title {
 		font-family:@hfont;
-		font-size:2.5em;
+		font-size:3.5em;
 		font-weight:700;
 		letter-spacing:-0.05em;
 		line-height:1.25em;

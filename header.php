@@ -21,18 +21,22 @@ Header template file
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5">
 
 		<!-- Links -->
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 		<!-- Stylesheets -->
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" type="text/css" />
-        <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
+		<?php /* <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" type="text/css" /> */ ?>
 
-		<!-- Javascript -->
+		<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
+
+		<?php readium_header_style(); ?>
+
 		<?php
+		// Javascript
+
 		// pull in the jQuery
 		wp_enqueue_script('jquery');
 		// grab the touchSwipe library
@@ -41,13 +45,15 @@ Header template file
 		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/script.js', 'jquery');
 
 		// comment script
-        if (is_singular() && get_option('thread_comments')) :
-        	wp_enqueue_script('comment-reply');
-        endif;
-        ?>
+		if (is_singular() && get_option('thread_comments')) :
+			wp_enqueue_script('comment-reply');
+		endif;
+		?>
 
-        <!-- Wordpress -->
-        <?php wp_head(); ?>
+		<?php 
+		// Wordpress header content
+
+		wp_head(); ?>
 
 	</head>
 	<body>

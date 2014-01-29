@@ -8,4 +8,5 @@ Version: 1.0
 */
 
 @import url(lib/font-awesome-4.0.3/css/font-awesome.min.css);
+@import url(lib/readium-heading/readium-heading.css);
 @import url(css/style.css);

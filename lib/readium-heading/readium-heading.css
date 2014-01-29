@@ -1,0 +1,73 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 2735803, 2014-01-29T17:05:33-0500
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Novecento Sans Wide Bold by Synthview
+ * URL: http://www.myfonts.com/fonts/synthview/novecento/wide-bold/
+ * 
+ * Webfont: Novecento Sans Wide Book by Synthview
+ * URL: http://www.myfonts.com/fonts/synthview/novecento/wide-book/
+ * 
+ * Webfont: Novecento Sans Wide DemiBold by Synthview
+ * URL: http://www.myfonts.com/fonts/synthview/novecento/wide-demibold/
+ * 
+ * Webfont: Novecento Sans Wide Light by Synthview
+ * URL: http://www.myfonts.com/fonts/synthview/novecento/wide-light/
+ * 
+ * Webfont: Novecento Sans Wide Medium by Synthview
+ * URL: http://www.myfonts.com/fonts/synthview/novecento/wide-medium/
+ * 
+ * Webfont: Novecento Sans Wide Normal by Synthview
+ * URL: http://www.myfonts.com/fonts/synthview/novecento/wide-normal/
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2735803
+ * Licensed pageviews: Unlimited
+ * Webfonts copyright: Copyright &#x00A9; 2013 by Jan Tonellato. All rights reserved.
+ * 
+ * © 2014 MyFonts Inc
+*/
+
+@font-face {
+    font-family: 'Novecentosanswide';
+    font-weight: 300;
+    src: url('webfonts/29BEBB_3_0.eot');
+    src: url('webfonts/29BEBB_3_0.eot?#iefix') format('embedded-opentype'),url('webfonts/29BEBB_3_0.woff') format('woff'),url('webfonts/29BEBB_3_0.ttf') format('truetype'),url('webfonts/29BEBB_3_0.svg#wf') format('svg');
+}
+@font-face {
+    font-family: 'Novecentosanswide';
+    font-weight: 400;
+    src: url('webfonts/29BEBB_1_0.eot');
+    src: url('webfonts/29BEBB_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/29BEBB_1_0.woff') format('woff'),url('webfonts/29BEBB_1_0.ttf') format('truetype'),url('webfonts/29BEBB_1_0.svg#wf') format('svg');
+}
+@font-face {
+    font-family: 'Novecentosanswide';
+    font-weight: 500;
+    src: url('webfonts/29BEBB_5_0.eot');
+    src: url('webfonts/29BEBB_5_0.eot?#iefix') format('embedded-opentype'),url('webfonts/29BEBB_5_0.woff') format('woff'),url('webfonts/29BEBB_5_0.ttf') format('truetype'),url('webfonts/29BEBB_5_0.svg#wf') format('svg');
+}
+@font-face {
+    font-family: 'Novecentosanswide';
+    font-weight: 600;
+    src: url('webfonts/29BEBB_4_0.eot');
+    src: url('webfonts/29BEBB_4_0.eot?#iefix') format('embedded-opentype'),url('webfonts/29BEBB_4_0.woff') format('woff'),url('webfonts/29BEBB_4_0.ttf') format('truetype'),url('webfonts/29BEBB_4_0.svg#wf') format('svg');
+}
+@font-face {
+    font-family: 'Novecentosanswide';
+    font-weight: 700;
+    src: url('webfonts/29BEBB_2_0.eot');
+    src: url('webfonts/29BEBB_2_0.eot?#iefix') format('embedded-opentype'),url('webfonts/29BEBB_2_0.woff') format('woff'),url('webfonts/29BEBB_2_0.ttf') format('truetype'),url('webfonts/29BEBB_2_0.svg#wf') format('svg');
+}
+@font-face {
+    font-family: 'Novecentosanswide';
+    font-weight: 800;
+    src: url('webfonts/29BEBB_0_0.eot');
+    src: url('webfonts/29BEBB_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/29BEBB_0_0.woff') format('woff'),url('webfonts/29BEBB_0_0.ttf') format('truetype'),url('webfonts/29BEBB_0_0.svg#wf') format('svg');
+}
+ 

@@ -6,52 +6,42 @@
  *
 */
 
-// Custom Header Options
-// $header_options = array(
-// 	'railroad' 		=> array(
-// 		'url' 			=> '%s/img/headers/railroad.jpg',
-// 		'thumbnail_url'	=> '%s/img/headers/railroad-thumbnail.jpg',
-// 		'description' 	=> __('Railroad Beach'),
-// 	),
-// 	'treedlane' 	=> array(
-// 		'url' 			=> '%s/img/headers/treed-lane.jpg',
-// 		'thumbnail_url'	=> '%s/img/headers/treed-lane-thumbnail.jpg',
-// 		'description' 	=> __('Treed Lane'),
-// 	),
-// 	'skyrose' 		=> array(
-// 		'url' 			=> '%s/img/headers/sky-rose.jpg',
-// 		'thumbnail_url'	=> '%s/img/headers/sky-rose-thumbnail.jpg',
-// 		'description' 	=> __('Roses in the Sky'),
-// 	),
-// 	'sunrisefield' 	=> array(
-// 		'url' 			=> '%s/img/headers/sunrise-field.jpg',
-// 		'thumbnail_url'	=> '%s/img/headers/sunrise-field-thumbnail.jpg',
-// 		'description' 	=> __('Sunrise over a Field'),
-// 	),
-// 	'hiker' 	=> array(
-// 		'url' 			=> '%s/img/headers/hiker.jpg',
-// 		'thumbnail_url'	=> '%s/img/headers/hiker-thumbnail.jpg',
-// 		'description' 	=> __("Hiker's Triumph"),
-// 	),
-// );
-// register_default_headers($header_options);
 
 function readium_custom_header_setup() {
-	add_theme_support('custom-header',
-		apply_filters('readium_custom_header_args',
-			array(
-				'default-image'	=> '%s/img/headers/railroad.jpg',
-				'default-text-color'	=> 'ffffff',
-				'width'					=> 1600,
-				'height'				=> 700,
-				'flex-height' 			=> true,
-				'flex-width'			=> false,
-				'wp-head-callback'       => 'readium_header_style',
-			)
-		)
+	$header_args = array(
+		'default-image'			=> '%s/img/headers/perfect-vacation.jpg',
+		'default-text-color'	=> 'ffffff',
+		'width'					=> 1600,
+		'height'				=> 700,
+		'flex-height' 			=> true,
+		'flex-width'			=> false,
+		'uploads'				=> true,
+		'wp-head-callback'      => 'readium_header_style',
 	);
+	add_theme_support('custom-header', $header_args);
 }
 add_action('after_setup_theme', 'readium_custom_header_setup');
+
+// Custom Header Options
+$header_options = array(
+	'vacation' 		=> array(
+		'url' 			=> '%s/img/headers/perfect-vacation.jpg',
+		'thumbnail_url'	=> '%s/img/headers/perfect-vacation-thumbnail.jpg',
+		'description' 	=> __('Perfect Vacation'),
+	),
+	'coffee' 	=> array(
+		'url' 			=> '%s/img/headers/blue-bottle-coffee.jpg',
+		'thumbnail_url'	=> '%s/img/headers/blue-bottle-coffee-thumbnail.jpg',
+		'description' 	=> __('Blue Bottle Coffee'),
+	),
+	'sky' 	=> array(
+		'url' 			=> '%s/img/headers/big-sky.jpg',
+		'thumbnail_url'	=> '%s/img/headers/big-sky-thumbnail.jpg',
+		'description' 	=> __('Big Sky'),
+	),
+);
+register_default_headers($header_options);
+
 
 if ( ! function_exists( 'readium_header_style' ) ) :
 
@@ -64,14 +54,17 @@ function readium_header_style() {
 
 	// If we get this far, we have custom styles. Let's do this.
 	?>
+
 	<style type="text/css">
-		#page-header-text {
+		header#site-header #page-title {
 			color:#<?php echo get_header_textcolor(); ?>;
 		}
 	</style>
+
 	<?php
 }
 endif; // readium_header_style
+
 
 if ( ! function_exists( 'readium_custom_header_image' ) ) :
 /**
