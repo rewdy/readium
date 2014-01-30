@@ -12,6 +12,7 @@ Readium theme javascript. Uses jQuery (obviously).
 /**
  * Inits and bindings
 */
+var state;
 jQuery(function(){
 	// Drawer toggle
 	jQuery('#navigation-toggle-link').click(function(){
@@ -29,7 +30,7 @@ jQuery(function(){
 		var contentTop = jQuery(destinationSel).offset().top;
 		jQuery('body,html').animate({
 			scrollTop:contentTop
-		}, 800);
+		}, 700);
 		return false;
 	});
 
@@ -57,16 +58,23 @@ jQuery(window).load(function(){
 	var headerHeight = jQuery('#site-header').not('.no-image').height();
 	var backgroundOffset = 0;
 	if (headerHeight) {
-		var body = jQuery('body');
+		// cache the items we're working with to reduce lag
+		$siteHeader = jQuery('#site-header');
+		$pageHeaderOverlay = jQuery('#page-header-overlay');
+
+		// add the scroll events
 		jQuery(window).scroll(function(){
-			if (body.hasClass('full')) {
+			if (state == 'full') {
 				if (window.pageTop < headerHeight) {
+					// change the offset for the header image
 					backgroundOffset = Math.abs(window.pageTop/2) * -1;
-					jQuery('#site-header').css('background-position', 'center ' + backgroundOffset + 'px');
+					$siteHeader.css('background-position', 'center ' + backgroundOffset + 'px');
+
+					// change the bottom offset for the title text
 					titleBottomOffset = (headerHeight-window.pageTop)/4;
-					titleMinBottomOffset = 100;
+					titleMinBottomOffset = 80;
 					titleBottomOffset = (titleBottomOffset > titleMinBottomOffset) ? titleBottomOffset : titleMinBottomOffset;
-					jQuery('#page-header-overlay').css('bottom', titleBottomOffset + 'px');
+					$pageHeaderOverlay.css('bottom', titleBottomOffset + 'px');
 				}
 			}
 		});
@@ -114,8 +122,10 @@ function toggleDrawer(way) {
 function setWindowSizeClasses() {
 	var winWidth = jQuery(window).width();
 	if (winWidth > 640) {
+		state = 'full';
 		jQuery('body').addClass('full').removeClass('mobile');
 	} else {
+		state = 'mobile';
 		jQuery('body').addClass('mobile').removeClass('full');
 	}
 }
