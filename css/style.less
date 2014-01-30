@@ -310,6 +310,10 @@ header#site-header {
 		letter-spacing:-0.05em;
 		line-height:1.25em;
 		margin:0 0 0.33em 0;
+		-webkit-text-shadow:0 0.2em 1em rgba(0,0,0,0.5);
+		-moz-text-shadow:0 0.2em 1em rgba(0,0,0,0.5);
+		-ms-text-shadow:0 0.2em 1em rgba(0,0,0,0.5);
+		text-shadow:0 0.2em 1em rgba(0,0,0,0.5);
 		a {
 			color:inherit;
 			text-decoration:none;
@@ -340,6 +344,23 @@ header#site-header {
 		img {
 			display:block;
 			visibility:hidden;
+		}
+		text-align:center; // to center the content link
+		#content-link {
+			position:absolute;
+			bottom:0;
+			opacity:0.3;
+			.transition;
+			.text {
+				.assistive-text;
+			}
+			i {
+				color:#fff;
+				font-size:3em;
+			}
+			&:hover {
+				opacity:0.8;
+			}
 		}
 	}
 	&.no-image {

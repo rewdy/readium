@@ -9,6 +9,9 @@ Readium theme javascript. Uses jQuery (obviously).
 
 */
 
+/**
+ * Inits and bindings
+*/
 jQuery(function(){
 	// Drawer toggle
 	jQuery('#navigation-toggle-link').click(function(){
@@ -19,19 +22,15 @@ jQuery(function(){
 		}
 		return false;
 	});
-	// Drawer swipe events
-	jQuery('body').swipe({
-		swipeRight:function(){
-			if (!jQuery('#control').hasClass('open')) {
-				toggleDrawer('open');
-			}
-		},
-		swipeLeft:function(){
-			if (jQuery('#control').hasClass('open')) {
-				toggleDrawer('close');
-			}
-		},
-		threshold:100
+	
+	// Set up the link to the content
+	jQuery('#content-link').click(function(){
+		var destinationSel = jQuery(this).attr('href');
+		var contentTop = jQuery(destinationSel).offset().top;
+		jQuery('body,html').animate({
+			scrollTop:contentTop
+		}, 800);
+		return false;
 	});
 
 	// Set pageTop variable for other functions to use
@@ -80,6 +79,9 @@ jQuery(window).load(function(){
 	});
 });
 
+/**
+ * Helper Functions
+*/
 function toggleDrawer(way) {
 	console.log('trying to toggle. -> ' + way);
 	if (way == 'open') {

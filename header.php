@@ -39,8 +39,6 @@ Header template file
 
 		// pull in the jQuery
 		wp_enqueue_script('jquery');
-		// grab the touchSwipe library
-		wp_enqueue_script('jquery.touchSwipe', get_template_directory_uri() . '/js/jquery.touchSwipe-1.6.5.min.js', 'jquery', '1.6.5');
 		// pull in the site js
 		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/script.js', 'jquery');
 
@@ -84,7 +82,6 @@ Header template file
 
 									<!-- Page subtitle? Is there such a thing? -->
 									<!-- <div id="page-tagline"><?php bloginfo('description'); ?></div> -->
-
 								</div>
 							</div>
 						</div>
@@ -93,6 +90,7 @@ Header template file
 						<div id="spacer">
 							<!-- Image not visible but used for sizing -->
 							<img src="<?php echo $header_image['url']; ?>" width="<?php echo $header_image['width']; ?>" height="<?php echo $header_image['height']; ?>" alt="" />
+							<a href="#content-body" id="content-link" title="Scroll to the content"><i class="fa fa-angle-down"></i> <span class="text">Go to content</span></a>
 						</div>
 						<?php endif; ?>
 					</header>
