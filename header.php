@@ -18,7 +18,7 @@ Header template file
 
 		<!-- Meta -->
 		<meta name="description" content="<?php bloginfo('description'); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<!-- Links -->
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
