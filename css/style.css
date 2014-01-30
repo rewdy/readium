@@ -1,11 +1,11 @@
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,hr,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figure,figcaption,hgroup,menu,footer,header,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0}
 article,aside,canvas,figure,figure img,figcaption,hgroup,footer,header,nav,section,audio,video{display:block}
 img{max-width:100%;height:auto}
-::selection{background:#9ad7ff}
-::-moz-selection{background:#9ad7ff}
+::selection{background:rgba(24,122,98,0.8)}
+::-moz-selection{background:rgba(24,122,98,0.8)}
 img::selection{background:transparent}
 img::-moz-selection{background:transparent}
-body{-webkit-tap-highlight-color:#9ad7ff}
+body{-webkit-tap-highlight-color:rgba(24,122,98,0.8)}
 body{font-family:Georgia,serif;font-size:1.125em;line-height:1.5em;-webkit-font-smoothing:antialiased;-moz-font-smoothing:antialiased;font-smoothing:antialiased}
 h1,h2,h3,h4,h5,h6{margin:.2rem 0 .667rem 0;line-height:1.395em;font-family:'Helvetica Neue',sans-serif;font-weight:700}h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,h1 a:visited,h2 a:visited,h3 a:visited,h4 a:visited,h5 a:visited,h6 a:visited{color:#222;text-decoration:none}h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover,h1 a:visited:hover,h2 a:visited:hover,h3 a:visited:hover,h4 a:visited:hover,h5 a:visited:hover,h6 a:visited:hover{text-decoration:underline}
 h1 span,h2 span,h3 span,h4 span,h5 span,h6 span,h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-size:.8em;font-weight:400}
