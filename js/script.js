@@ -39,6 +39,14 @@ jQuery(function(){
 		window.pageTop = jQuery(window).scrollTop();
 	});
 
+	// some js for responsiveness
+	setWindowSizeClasses() // the the classes initially
+	var sized;
+	jQuery(window).resize(function(){
+		clearTimeout(sized);
+		sized = setTimeout(setWindowSizeClasses, 200);
+	})
+
 	enableSharing();
 });
 
@@ -46,13 +54,20 @@ jQuery(window).load(function(){
 	// Various items come in the load section because if images aren't loaded, there will be issues in calculating offsets.
 
 	// Parallax effect on header image
-	var header_height = jQuery('#site-header').not('.no-image').height();
+	var headerHeight = jQuery('#site-header').not('.no-image').height();
 	var backgroundOffset = 0;
-	if (header_height) {
+	if (headerHeight) {
+		var body = jQuery('body');
 		jQuery(window).scroll(function(){
-			if (window.pageTop < header_height) {
-				backgroundOffset = Math.abs(window.pageTop/2) * -1;
-				jQuery('#site-header').css('background-position', 'center ' + backgroundOffset + 'px');
+			if (body.hasClass('full')) {
+				if (window.pageTop < headerHeight) {
+					backgroundOffset = Math.abs(window.pageTop/2) * -1;
+					jQuery('#site-header').css('background-position', 'center ' + backgroundOffset + 'px');
+					titleBottomOffset = (headerHeight-window.pageTop)/4;
+					titleMinBottomOffset = 100;
+					titleBottomOffset = (titleBottomOffset > titleMinBottomOffset) ? titleBottomOffset : titleMinBottomOffset;
+					jQuery('#page-header-overlay').css('bottom', titleBottomOffset + 'px');
+				}
 			}
 		});
 	}
@@ -83,7 +98,6 @@ jQuery(window).load(function(){
  * Helper Functions
 */
 function toggleDrawer(way) {
-	console.log('trying to toggle. -> ' + way);
 	if (way == 'open') {
 		jQuery('#control').addClass('open');
 		setTimeout(function(){
@@ -96,6 +110,17 @@ function toggleDrawer(way) {
 	}
 }
 
+// sets classes for the size of the window
+function setWindowSizeClasses() {
+	var winWidth = jQuery(window).width();
+	if (winWidth > 640) {
+		jQuery('body').addClass('full').removeClass('mobile');
+	} else {
+		jQuery('body').addClass('mobile').removeClass('full');
+	}
+}
+
+// set up the sharing behavior
 function enableSharing() {
 	jQuery('.sharing-list a').not('.email, .pinterest').click(function(){
 		href = jQuery(this).attr('href');
