@@ -39,6 +39,8 @@ Header template file
 
 		// pull in the jQuery
 		wp_enqueue_script('jquery');
+		// pull in Nivo-gallery
+		wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
 		// pull in the site js
 		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/script.js', 'jquery');
 

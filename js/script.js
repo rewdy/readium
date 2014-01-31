@@ -48,7 +48,10 @@ jQuery(function(){
 		sized = setTimeout(setWindowSizeClasses, 200);
 	})
 
-	enableSharing();
+	// lightbox init
+	initLightbox();
+
+	initSharing();
 });
 
 jQuery(window).load(function(){
@@ -130,8 +133,25 @@ function setWindowSizeClasses() {
 	}
 }
 
+function initLightbox() {
+	jQuery('.gallery').each(function(index){
+		var $gal = jQuery(this);
+		var galId = $gal.attr('id');
+		var $galleryLinks = $gal.find('.gallery-icon a').filter("[href$='.jpg']")
+		$galleryLinks.each(function(){
+			if (jQuery(this).attr('title')!='') {
+				$link = jQuery(this);
+				var title = $link.find('img').attr('alt');
+				$link.attr('title', title);
+			}
+		});
+		$galleryLinks.attr('data-lightbox-gallery', galId);
+		$galleryLinks.nivoLightbox();
+	});
+}
+
 // set up the sharing behavior
-function enableSharing() {
+function initSharing() {
 	jQuery('.sharing-list a').not('.email, .pinterest').click(function(){
 		href = jQuery(this).attr('href');
 		openWindow(href, 'Share');

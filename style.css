@@ -7,6 +7,8 @@ Description: A theme, inspired by the beautiful Medium.com website, designed for
 Version: 1.0
 */
 
-@import url(lib/font-awesome-4.0.3/css/font-awesome.min.css);
-@import url(lib/readium-heading/readium-heading.css);
+@import url(lib/fonts/font-awesome-4.0.3/css/font-awesome.min.css);
+@import url(lib/fonts/readium-heading/readium-heading.css);
+@import url(lib/Nivo-Lightbox-1.1/nivo-lightbox.css);
+@import url(lib/Nivo-Lightbox-1.1/themes/default/default.css);
 @import url(css/style.css);

@@ -51,12 +51,12 @@ $is_resource = is_post_type_archive('readium_resource');
 
 								<?php if (!is_singular()) : ?>
 								<?php //if (get_next_posts_link() != '' && get_previous_posts_link() != '') : ?>
-								<div class="pagination-links">
+								<div class="directional-links pagination">
 									<?php if (get_next_posts_link() != '') :?>
-									<div class="nav-previous left"><?php next_posts_link('&larr; Older posts'); ?></div>
+									<div class="nav-previous"><?php next_posts_link('&larr; Older posts'); ?></div>
 									<?php endif; ?>
 									<?php if (get_previous_posts_link() != '') :?>
-									<div class="nav-next right"><?php previous_posts_link('Newer posts &rarr;'); ?></div>
+									<div class="nav-next"><?php previous_posts_link('Newer posts &rarr;'); ?></div>
 									<?php endif; ?>
 								</div>
 								<?php //endif; ?>
