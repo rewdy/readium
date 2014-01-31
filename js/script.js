@@ -137,7 +137,7 @@ function initLightbox() {
 	jQuery('.gallery').each(function(index){
 		var $gal = jQuery(this);
 		var galId = $gal.attr('id');
-		var $galleryLinks = $gal.find('.gallery-icon a').filter("[href$='.jpg']")
+		var $galleryLinks = $gal.find('.gallery-icon a').filter("[href$='.jpg'], [href$='.gif'], [href$='.png']");
 		$galleryLinks.each(function(){
 			if (jQuery(this).attr('title')!='') {
 				$link = jQuery(this);
