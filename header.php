@@ -38,11 +38,12 @@ Header template file
 		// Javascript
 
 		// pull in the jQuery
-		wp_enqueue_script('jquery');
+		//wp_enqueue_script('jquery');
 		// pull in Nivo-gallery
-		wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
+		//wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
 		// pull in the site js
-		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/script.js', 'jquery');
+		wp_enqueue_script('skrollr', get_template_directory_uri() . '/js/skrollr.min.js', null, '0.6.21');
+		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/readium-script.js');
 
 		// comment script
 		if (is_singular() && get_option('thread_comments')) :
@@ -67,8 +68,8 @@ Header template file
 					<?php
 						$header_image = readium_custom_header_image();
 					?>
-					<header id="site-header"<?php echo (!$header_image) ? ' class="no-image"' : ' style="background-image:url(' . $header_image['url'] . ')"'; ?>>
-						<div id="site-id">
+					<header id="site-header"<?php echo (!$header_image) ? ' class="no-image"' : ' style="background-image:url(' . $header_image['url'] . ')"'; ?> data-0="background-position:center 0%" data-top-bottom="background-position:center -150%">
+						<div id="site-id" data-0="opacity:1" data-100="opacity:0.2">
 							<div class="grid">
 								<div class="g12 text-center">
 									<?php $title_tag = (!is_single()) ? 'h1' : 'div'; ?>
@@ -77,7 +78,7 @@ Header template file
 							</div>
 						</div>
 						<?php if (is_singular()) : ?>
-						<div id="page-header-overlay">
+						<div id="page-header-overlay" data-0="bottom:25%; opacity:1" data-top-top="bottom:12.5%; opacity:1" data-top-bottom="opacity:0.1">
 							<div class="grid">
 								<div id="page-header-text" class="g12 text-center">
 									<h1 id="page-title"><?php the_title(); ?></h1>

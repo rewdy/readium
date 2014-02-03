@@ -5,7 +5,7 @@ Readium Theme
 
 script.js
 
-Readium theme javascript. Uses jQuery (obviously).
+Readium theme javascript.
 
 */
 
@@ -34,12 +34,6 @@ jQuery(function(){
 		return false;
 	});
 
-	// Set pageTop variable for other functions to use
-	window.pageTop = jQuery('html,body').scrollTop();
-	jQuery(window).scroll(function(){
-		window.pageTop = jQuery(window).scrollTop();
-	});
-
 	// some js for responsiveness
 	setWindowSizeClasses() // the the classes initially
 	var sized;
@@ -52,57 +46,6 @@ jQuery(function(){
 	initLightbox();
 
 	initSharing();
-});
-
-jQuery(window).load(function(){
-	// Various items come in the load section because if images aren't loaded, there will be issues in calculating offsets.
-
-	// Parallax effect on header image
-	var headerHeight = jQuery('#site-header').not('.no-image').height();
-	var backgroundOffset = 0;
-	if (headerHeight) {
-		// cache the items we're working with to reduce lag
-		$siteHeader = jQuery('#site-header');
-		$pageHeaderOverlay = jQuery('#page-header-overlay');
-
-		// add the scroll events
-		jQuery(window).scroll(function(){
-			if (state == 'full') {
-				if (window.pageTop < headerHeight) {
-					// change the offset for the header image
-					backgroundOffset = Math.abs(window.pageTop/2) * -1;
-					$siteHeader.css('background-position', 'center ' + backgroundOffset + 'px');
-
-					// change the bottom offset for the title text
-					titleBottomOffset = (headerHeight-window.pageTop)/4;
-					titleMinBottomOffset = 80;
-					titleBottomOffset = (titleBottomOffset > titleMinBottomOffset) ? titleBottomOffset : titleMinBottomOffset;
-					$pageHeaderOverlay.css('bottom', titleBottomOffset + 'px');
-				}
-			}
-		});
-	}
-
-	// Read line
-	jQuery('.readline').each(function(){
-		var enabled = false;
-		var line = jQuery(this);
-		var article = jQuery(this).closest('article');
-		var articleTop = article.offset().top;
-		var articleBottom = articleTop + article.outerHeight();
-		var calculationPadding = 400; // this is extra space to add when calculating the percentage because people don't read at the top of their screens.
-
-		// sets the readline accordingly on an interval to keep from bogging down the scroll event
-		setInterval(function(){
-			var top = window.pageTop;
-			if (top >= articleTop && top <= articleBottom) {
-				var percentageFinished = Math.round((top - articleTop) / (articleBottom - articleTop - calculationPadding) * 100);
-				line.width(percentageFinished + '%');
-			} else {
-				line.width(0);
-			}
-		}, 50);
-	});
 });
 
 /**
