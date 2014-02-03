@@ -80,11 +80,6 @@ function setupParallax() {
 	$headerOverlay = jQuery('#page-header-overlay');
 
 	var headerHeight = $siteHeader.not('.no-image').height();
-	// re-set if window gets resized;
-	jQuery(window).resize(function(){
-		headerHeight = $siteHeader.not('.no-image').height();
-	});
-
 	var bgOffset = 0;
 	if (headerHeight) {
 		jQuery(window).scroll(function(){
@@ -102,6 +97,15 @@ function setupParallax() {
 					opacity = (opacity > 1) ? 1 : opacity; // block values > 1;
 					$headerOverlay.css('bottom', titleBottomOffset + 'px').css('opacity', opacity);
 				}
+			}
+		});
+
+		// re-set stuff if window gets resized;
+		jQuery(window).resize(function(){
+			headerHeight = $siteHeader.not('.no-image').height();
+			if (window.context == 'mobile') {
+				$siteHeader.css('background-position', 'center 0');
+				$headerOverlay.css('bottom', '25%').css('opacity', 1);
 			}
 		});
 	}
