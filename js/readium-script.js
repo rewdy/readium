@@ -20,7 +20,8 @@ ready(function(){
 	// setup UI
 	setupUI();
 	var s = skrollr.init();
-
+	skrollr.menu.init(s);
+	
 	// set context
 
 
