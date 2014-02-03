@@ -80,6 +80,11 @@ function setupParallax() {
 	$headerOverlay = jQuery('#page-header-overlay');
 
 	var headerHeight = $siteHeader.not('.no-image').height();
+	// re-set if window gets resized;
+	jQuery(window).resize(function(){
+		headerHeight = $siteHeader.not('.no-image').height();
+	});
+
 	var bgOffset = 0;
 	if (headerHeight) {
 		jQuery(window).scroll(function(){
@@ -122,6 +127,11 @@ function setupReadline() {
 		var article = jQuery(this).closest('article');
 		var articleTop = article.offset().top;
 		var articleBottom = articleTop + article.outerHeight();
+		// reset top and bottom for window resize
+		jQuery(window).resize(function(){
+			articleTop = article.offset().top;
+			articleBottom = articleTop + article.outerHeight();
+		});
 		var calculationPadding = 400; // this is extra space to add when calculating the percentage because people don't read at the top of their screens.
 
 		// sets the readline accordingly on an interval to keep from bogging down the scroll event
