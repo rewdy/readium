@@ -770,17 +770,21 @@ footer#site-footer {
 	transition:all 0.15s;
 }
 
+
 /*
-4. Theme
+4. State
 --------
 */
 
-
-
-/*
-5. State
---------
-*/
+body.admin-bar {
+	#drawer-content {
+		padding-top:1.8em;
+	}
+	a#navigation-toggle-link {
+		top:(((@lineheight/2) + @siteIdSpace) + 1.8em);
+	}
+	
+}
 
 // pull in classes
 @import "plugins/classes.less";

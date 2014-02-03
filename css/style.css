@@ -158,6 +158,8 @@ footer#site-footer .widget{margin-bottom:1.5em}footer#site-footer .widget .lined
 footer#site-footer .widget ul{margin:0;padding:0}footer#site-footer .widget ul li{margin:0;padding:.4em 0;list-style:none;border-bottom:1px solid #ddd}
 footer#site-footer .widget ul li:last-child{border-bottom:0 none}
 .readline{position:fixed;top:0;left:0;width:0;height:2px;background-color:#187a62;-webkit-transition:all .15s;-moz-transition:all .15s;-ms-transition:all .15s;transition:all .15s}
+body.admin-bar #drawer-content{padding-top:1.8em}
+body.admin-bar a#navigation-toggle-link{top:2.75em}
 .attn{font-size:1.15em}
 .right{text-align:right}
 .left{text-align:left}

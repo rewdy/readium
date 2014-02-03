@@ -43,6 +43,7 @@ Header template file
 		//wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
 		// pull in the site js
 		wp_enqueue_script('skrollr', get_template_directory_uri() . '/js/skrollr.min.js', null, '0.6.21');
+		wp_enqueue_script('skrollr.menu', get_template_directory_uri() . '/js/skrollr.menu.min.js', 'skrollr', '0.1.10');
 		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/readium-script.js');
 
 		// comment script
@@ -57,7 +58,7 @@ Header template file
 		wp_head(); ?>
 
 	</head>
-	<body>
+	<body<?php echo (is_admin_bar_showing()) ? ' class="admin-bar"' : ''; ?>>
 
 		<div id="control">
 			
@@ -78,7 +79,7 @@ Header template file
 							</div>
 						</div>
 						<?php if (is_singular()) : ?>
-						<div id="page-header-overlay" data-0="bottom:25%; opacity:1" data-top-top="bottom:12.5%; opacity:1" data-top-bottom="opacity:0.1">
+						<div id="page-header-overlay" data-0="bottom:25%; opacity:1" data-top-top="bottom:12.5%; opacity:0.8" data-top-bottom="opacity:0.1">
 							<div class="grid">
 								<div id="page-header-text" class="g12 text-center">
 									<h1 id="page-title"><?php the_title(); ?></h1>
