@@ -38,13 +38,11 @@ Header template file
 		// Javascript
 
 		// pull in the jQuery
-		//wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery');
 		// pull in Nivo-gallery
-		//wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
+		wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
 		// pull in the site js
-		wp_enqueue_script('skrollr', get_template_directory_uri() . '/js/skrollr.min.js', null, '0.6.21');
-		wp_enqueue_script('skrollr.menu', get_template_directory_uri() . '/js/skrollr.menu.min.js', 'skrollr', '0.1.10');
-		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/readium-script.js');
+		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/readium-script.min.js', 'jquery');
 
 		// comment script
 		if (is_singular() && get_option('thread_comments')) :
