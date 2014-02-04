@@ -179,7 +179,7 @@ function toggleDrawer(e) {
 	} else {
 		$control.addClass('open');
 		setTimeout(function(){
-			$page.bind('blick', toggleDrawer);
+			$page.bind('click', toggleDrawer);
 		},500);
 	}
 	if (e) {
