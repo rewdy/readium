@@ -13,6 +13,11 @@ Attachment default template file
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+	<?php if (is_singular()) : ?>
+	<div class="back-to-post"><?php previous_post_link('%link', '&laquo; Back to post &#8220;%title&#8221;'); ?></div>
+	<?php endif; ?>
+
 	<!-- Post Title -->
 	<?php if (!is_singular()) :?>
 	<h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
@@ -65,10 +70,8 @@ Attachment default template file
 </article>
 
 <?php if (is_single()) : ?>
-<div class="row">
-	<div class="post-directional-links">
-		<div class="previous-post-link g6"><?php previous_post_link(); ?>&nbsp;</div>
-		<div class="next-post-link g6 right">&nbsp;<?php next_post_link(); ?></div>
-	</div>
+<div class="directional-links horizontal">
+	<div class="nav-previous"><?php previous_post_link('%link', '<i class="fa fa-angle-left"></i> <span class="text">&#8220;%title&#8221;</span>'); ?></div>
+	<div class="nav-next"><?php next_post_link('%link', '<span class="text">&#8220;%title&#8221;</span> <i class="fa fa-angle-right"></i>'); ?></div>
 </div>
 <?php endif; ?>

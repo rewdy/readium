@@ -54,6 +54,12 @@ function setupUI() {
 	// lightbox
 	setupLightbox();
 
+	// image page links append hash to keep page from jumping
+	jQuery('#image-navigation a').each(function(){
+		var newHref = jQuery(this).attr('href') + '#content-body';
+		jQuery(this).attr('href', newHref);
+	});
+
 	// sharing links
 	setupSharing();
 }
