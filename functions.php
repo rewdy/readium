@@ -215,6 +215,11 @@ function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = '
 			'url'	=> 'http://www.pinterest.com/pin/create/bookmarklet/?url={{url}}&description={{title}}',
 			'icon'	=> 'pinterest',
 		);
+		$services['tumblr'] = array(
+			'label'	=> 'Tumblr',
+			'url'	=> 'http://www.tumblr.com/share/?url={{url}}&description={{title}}',
+			'icon'	=> 'tumblr',
+		);
 		$services['gplus'] = array(
 			'label'	=> 'Google +',
 			'url'	=> 'https://plus.google.com/share?url={{url}}',
