@@ -39,8 +39,13 @@ Header template file
 
 		// pull in the jQuery
 		wp_enqueue_script('jquery');
-		// pull in Nivo-gallery
-		wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
+		if (is_singular()) {
+			// pull in Nivo-gallery
+			wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
+		}
+		if (is_post_type_archive('readium_resource')) {
+			wp_enqueue_script('masonry', get_template_directory_uri() . '/js/masonry.min.js', 'jquery', '3.1.3');
+		}
 		// pull in the site js
 		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/readium-script.min.js', 'jquery');
 

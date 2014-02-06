@@ -35,6 +35,9 @@ jQuery(window).load(function(){
 	// header parallax setup
 	setupParallax();
 
+	// Masonry
+	setupMasonry();
+
 	// readline setup
 	setupReadline();
 });
@@ -127,6 +130,16 @@ function setupScrollToContent() {
 		}, 700);
 		return false;
 	});
+}
+
+// Sets up masonry
+function setupMasonry() {
+	// masonry
+	if (jQuery().masonry) {
+		jQuery('#resources_holder').masonry({
+			itemSelector: '.resource_holder'
+		});
+	}
 }
 
 // Sets up the readline
