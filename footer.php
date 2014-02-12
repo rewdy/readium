@@ -26,6 +26,8 @@ Footer template file
 					</div>
 				</footer>
 				
+				<div id="page_overlay"><!-- blackout div for the page --></div>
+				
 			</div> <!-- close #page -->
 		</div> <!-- close #control -->
 
