@@ -208,10 +208,13 @@ function readium_custom_header_image() {
 	// check for redium_resource pages, otherwise check for (other) singular pages
 	if (is_post_type_archive('readium_resource') || is_singular('readium_resource')) {
 		// set header_image to the resources image
-		$header_image = get_theme_mod('resources_header_image');
-		$processed['url'] = $header_image;
-		$processed['width'] = '';
-		$processed['height'] = '';
+		$resources_image = get_theme_mod('resources_header_image');
+		if ($resources_image != '') {
+			$header_image = $resources_image;
+			$processed['url'] = $header_image;
+			$processed['width'] = '';
+			$processed['height'] = '';
+		}
 
 	} else if (is_singular()) {
 
