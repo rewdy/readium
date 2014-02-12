@@ -199,6 +199,12 @@ a#navigation-toggle-link {
 		left:140%;
 	}
 }
+@media only screen and (max-width: @breakpoint) {
+	a#navigation-toggle-link .text,
+	a#navigation-toggle-link:hover .text {
+		display:none;
+	}
+}
 .open a#navigation-toggle-link .text,
 .open a#navigation-toggle-link:hover .text {
 	left:100%;
@@ -268,7 +274,7 @@ header#site-header {
 	min-height:@headerMinHeight;
 	background-color:@accent;
 	background-repeat:no-repeat;
-	background-position:center top;
+	background-position:50% top;
 	background-size:100% auto;
 	background-attachment:fixed;
 	@media only screen and (max-width:@breakpoint) {
@@ -845,7 +851,9 @@ body.admin-bar {
 	a#navigation-toggle-link {
 		top:(((@lineheight/2) + @siteIdSpace) + 1.8em);
 	}
-	
+	header#site-header {
+		background-position:50% 1.8em;
+	}
 }
 
 // pull in classes

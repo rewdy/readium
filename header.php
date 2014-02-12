@@ -47,7 +47,7 @@ Header template file
 			wp_enqueue_script('masonry', get_template_directory_uri() . '/js/masonry.min.js', 'jquery', '3.1.3');
 		}
 		// pull in the site js
-		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/readium-script.min.js', 'jquery');
+		wp_enqueue_script('readium_js', get_template_directory_uri() . '/js/readium-script.js', 'jquery');
 
 		// comment script
 		if (is_singular() && get_option('thread_comments')) :

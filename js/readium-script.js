@@ -87,8 +87,12 @@ function setupSharing() {
 function setupParallax() {
 	$siteHeader = jQuery('#site-header');
 	$headerOverlay = jQuery('#page-header-overlay');
-
 	var headerHeight = $siteHeader.not('.no-image').height();
+	if (jQuery('body.admin-bar')) {
+		var initialBgOffsetY = parseInt($siteHeader.css('background-position').split(' ')[1]);
+	} else {
+		var initialBgOffsetY = 0;
+	}
 	var bgOffset = 0;
 	if (headerHeight) {
 		jQuery(window).scroll(function(){
@@ -96,6 +100,7 @@ function setupParallax() {
 				if (window.pageTop < headerHeight) {
 					// header image stuff
 					bgOffset = Math.abs(window.pageTop/2) * -1;
+					bgOffset += initialBgOffsetY;
 					$siteHeader.css('background-position', 'center ' + bgOffset + 'px');
 
 					// header overlay stuff
