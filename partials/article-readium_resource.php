@@ -26,7 +26,7 @@ $is_column = (!is_singular('readium_resource') && !is_search()) ? true : false;
 		<?php if ($is_column) : // column display ?>
 
 			<?php if (has_post_thumbnail()) : ?>
-			<div class="thumbnail"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_post_thumbnail('resource-thumbnail'); ?></a></div>
+			<div class="thumbnail"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_post_thumbnail('resource-thumb'); ?></a></div>
 			<?php endif; ?>
 			<h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			<?php the_excerpt(); ?>
