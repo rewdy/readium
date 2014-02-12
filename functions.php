@@ -168,7 +168,7 @@ class Readium_Customize {
 		$wp_customize->add_setting('resources_header_image',
 			array(
 				'default' 	=> '%s/img/headers/perfect-vacation.jpg',
-				'type'		=> 'option',
+				'type'		=> 'theme_mod',
 				'capability'=> 'edit_theme_options',
 				'transport'	=> 'refresh'
 			)
