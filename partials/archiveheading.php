@@ -34,7 +34,7 @@ if (is_home()) {
 
 } else {
 	if (is_post_type_archive('readium_resource')) {
-		$listing_heading = 'Resources';
+		$listing_heading = '';
 	} else if (is_category()) {
 		$the_category = single_cat_title('', false);
 		if ($the_category == 'Uncategorized') {
@@ -69,8 +69,9 @@ if (is_home()) {
 
 <?php else : ?>
 
-
+<?php if ($listing_heading != '') : ?>
 <h1><?php echo $listing_heading; ?></h1>
+<?php endif;?>
 
 <?php if (is_category()) : ?>
 	<?php if (category_description()!='') : ?>

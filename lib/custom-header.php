@@ -86,7 +86,7 @@ function readium_custom_header_image() {
 
 	}
 	
-	if (is_singular()) {
+	if (is_singular() && !is_singular('readium_resource')) {
 
 		if (get_the_post_thumbnail() != '') {
 

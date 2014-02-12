@@ -81,11 +81,11 @@ Header template file
 								</div>
 							</div>
 						</div>
-						<?php if (is_singular()) : ?>
+						<?php if (is_singular() || is_post_type_archive('readium_resource')) : ?>
 						<div id="page-header-overlay" data-0="bottom:25%; opacity:1" data-top-top="bottom:12.5%; opacity:0.8" data-top-bottom="opacity:0.1">
 							<div class="grid">
 								<div id="page-header-text" class="g12 text-center">
-									<h1 id="page-title"><?php the_title(); ?></h1>
+									<h1 id="page-title"><?php if (!is_post_type_archive('readium_resource')) { the_title(); } else { ?>Resources<?php } ?></h1>
 
 									<!-- Page subtitle? Is there such a thing? -->
 									<!-- <div id="page-tagline"><?php bloginfo('description'); ?></div> -->
