@@ -160,7 +160,7 @@ class Readium_Customize {
 				'title'			=> __('Resources Header Image', 'readium'),
 				'priority'		=> 65,
 				'capability'	=> 'edit_theme_options',
-				'description' 	=> __('Upload a header image to be shown on the resources section of the site:', 'readium')
+				'description' 	=> __('Upload a header image to be shown on the resources section of the site <b style="color:#c00">(Please resize to 1600x840ish before uploading)</b>:', 'readium')
 			)
 		);
 
