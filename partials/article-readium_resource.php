@@ -32,8 +32,7 @@ $is_column = (!is_singular('readium_resource') && !is_search()) ? true : false;
 			<?php the_excerpt(); ?>
 
 		<?php elseif (is_single()) : // single resource view ?>
-
-			<h1><?php the_title(); ?></h1>
+			<!-- <h1><?php the_title(); ?></h1> -->
 
 			<?php if (has_post_thumbnail()) : ?>
 			<div class="thumbnail large alignleft"><?php the_post_thumbnail('medium'); ?></div>

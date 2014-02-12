@@ -96,7 +96,145 @@ function readium_widget_init() {
 add_action('widgets_init', 'readium_widget_init');
 
 // Custom Header Image
-include "lib/custom-header.php";
+function readium_custom_header_setup() {
+	$header_args = array(
+		'default-image'			=> '%s/img/headers/perfect-vacation.jpg',
+		'default-text-color'	=> 'ffffff',
+		'width'					=> 1600,
+		'height'				=> 700,
+		'flex-height' 			=> true,
+		'flex-width'			=> false,
+		'uploads'				=> true,
+		'wp-head-callback'      => 'readium_header_style',
+	);
+	add_theme_support('custom-header', $header_args);
+}
+add_action('after_setup_theme', 'readium_custom_header_setup');
+
+// Custom Header Options
+$header_options = array(
+	'vacation' 		=> array(
+		'url' 			=> '%s/img/headers/perfect-vacation.jpg',
+		'thumbnail_url'	=> '%s/img/headers/perfect-vacation-thumbnail.jpg',
+		'description' 	=> __('Perfect Vacation'),
+	),
+	'coffee' 	=> array(
+		'url' 			=> '%s/img/headers/blue-bottle-coffee.jpg',
+		'thumbnail_url'	=> '%s/img/headers/blue-bottle-coffee-thumbnail.jpg',
+		'description' 	=> __('Blue Bottle Coffee'),
+	),
+	'sky' 	=> array(
+		'url' 			=> '%s/img/headers/big-sky.jpg',
+		'thumbnail_url'	=> '%s/img/headers/big-sky-thumbnail.jpg',
+		'description' 	=> __('Big Sky'),
+	),
+);
+register_default_headers($header_options);
+
+if (!function_exists('readium_header_style')) :
+function readium_header_style() {
+
+	// If no custom options for text are set, let's bail
+	// get_header_textcolor() options: HEADER_TEXTCOLOR is default, hide text (returns 'blank') or any hex value
+	if ( HEADER_TEXTCOLOR == get_header_textcolor() )
+		return;
+
+	// If we get this far, we have custom styles. Let's do this.
+	?>
+
+	<style type="text/css">
+		header#site-header #page-title {
+			color:#<?php echo get_header_textcolor(); ?>;
+		}
+	</style>
+
+	<?php
+}
+endif; // readium_header_style
+
+class Readium_Customize {
+	public static function register($wp_customize) {
+		// add the section
+		$wp_customize->add_section('readium_options',
+			array(
+				'title'			=> __('Resources Header Image', 'readium'),
+				'priority'		=> 65,
+				'capability'	=> 'edit_theme_options',
+				'description' 	=> __('Upload a header image to be shown on the resources section of the site:', 'readium')
+			)
+		);
+
+		// add the settings
+		$wp_customize->add_setting('resources_header_image',
+			array(
+				'default' 	=> '%s/img/headers/perfect-vacation.jpg',
+				'type'		=> 'option',
+				'capability'=> 'edit_theme_options',
+				'transport'	=> 'refresh'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				'resources_header_image',
+				array(
+					'label' 	=> __('Resources Header Image', 'readium'),
+					'section'	=> 'readium_options',
+					'settings'	=> 'resources_header_image'
+				)
+			)
+		);
+	}
+}
+
+add_action('customize_register', array('Readium_Customize', 'register'));
+
+if (!function_exists('readium_custom_header_image')) :
+// custom header image function
+function readium_custom_header_image() {
+
+	$processed = array();
+	
+	// get the header image; this is the default.
+	$header_image = get_custom_header();
+
+	if ($header_image != '') {
+		$processed['url'] = $header_image->url;
+		$processed['width'] = $header_image->width;
+		$processed['height'] = $header_image->height;
+	}
+	
+	// check for redium_resource pages, otherwise check for (other) singular pages
+	if (is_post_type_archive('readium_resource') || is_singular('readium_resource')) {
+		// set header_image to the resources image
+		$header_image = get_theme_mod('resources_header_image');
+		$processed['url'] = $header_image;
+		$processed['width'] = '';
+		$processed['height'] = '';
+
+	} else if (is_singular()) {
+
+		if (get_the_post_thumbnail() != '') {
+
+			// get the URL of the featured image
+			$header_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'page-header');
+			$processed['url'] = $header_image[0];
+			$processed['width'] = $header_image[1];
+			$processed['height'] = $header_image[2];
+		}
+
+	}
+
+	// if $header_image is an empty string, set it to false.
+	$processed = (empty($processed)) ? false : $processed;
+
+	return $processed;
+
+}
+endif; // readium_custom_header_image
+add_action('wp_head', 'readium_custom_header_image');
+
 
 // Content width
 if (!isset($content_width)) {
@@ -225,11 +363,6 @@ function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = '
 			'url'	=> 'https://plus.google.com/share?url={{url}}',
 			'icon'	=> 'google-plus',
 		);
-		// $services['adn'] = array(
-		// 	'label'	=> 'App.net',
-		// 	'url'	=> 'https://alpha.app.net/intent/post?url={{url}}&amp;text={{title}}',
-		// 	'icon'	=> 'adn',
-		// );
 		$services['email']	= array(
 			'label'	=> 'Email',
 			'url'	=> 'mailto:?&amp;Subject={{title}}&amp;Body={{url}}',

@@ -86,9 +86,6 @@ Header template file
 							<div class="grid">
 								<div id="page-header-text" class="g12 text-center">
 									<h1 id="page-title"><?php if (!is_post_type_archive('readium_resource')) { the_title(); } else { ?>Resources<?php } ?></h1>
-
-									<!-- Page subtitle? Is there such a thing? -->
-									<!-- <div id="page-tagline"><?php bloginfo('description'); ?></div> -->
 								</div>
 							</div>
 						</div>
