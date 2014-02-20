@@ -21,6 +21,8 @@ jQuery(function(){
 	setupUI();
 	// set context
 	setupSizeContext();
+	// comment content watcher
+	watchComments();
 });
 
 // Initiate page-size related stuff
@@ -190,6 +192,31 @@ function setupLightbox() {
 		});
 		$galleryLinks.attr('data-lightbox-gallery', galId);
 		$galleryLinks.nivoLightbox({effect: 'fadeScale'});
+	});
+}
+
+function watchComments() {
+	jQuery('textarea#comment').each(function(){
+		var htmlNotice = jQuery('.some-html-allowed');
+		var htmlNoticeVisible = false;
+		var timer = false;
+		jQuery(this).focus(function(){
+			$commentbox = jQuery(this);
+			timer = setInterval(function(){
+				var commentContent = $commentbox.val();
+				if (htmlNoticeVisible) {
+					if (commentContent.indexOf('<') < 0) {
+						htmlNotice.slideUp();
+						htmlNoticeVisible = false;
+					}
+				} else if (commentContent.indexOf('<') >= 0) {
+					htmlNotice.slideDown();
+					htmlNoticeVisible = true;
+				}
+			},500);
+		}).blur(function(){
+			clearInterval(timer);
+		});
 	});
 }
 

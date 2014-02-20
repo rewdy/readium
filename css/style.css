@@ -148,6 +148,7 @@ article div[id^='attachment'] .wp-caption-text{padding:.5em;text-align:right}
 .back-to-post{margin:0 0 1.5em 0;font-family:'Helvetica Neue',sans-serif;font-size:.8em}.back-to-post a{display:inline-block;padding:.25em 1em;background-color:#f2f2f2;text-decoration:none}
 #content-comments h2 .count{margin-left:.5em}
 #content-comments .comment-awaiting-moderation{position:relative;top:.5em;text-align:center}
+#content-comments .some-html-allowed{display:none}
 ul.comment-list{margin:0;padding:.4em 0 0 0;border-top:1px solid #e6e6e6}ul.comment-list li{display:block;list-style:none;margin:0;padding:0}
 ul.comment-list ul{padding-left:2.25em}
 ul.sharing-list{margin:0;padding:0;font-size:.8em;text-align:center}ul.sharing-list li{margin:0;padding:0;list-style:none;display:inline}ul.sharing-list li a{display:inline-block;width:1em;height:1em;padding:.75em .75em;margin:0 .25em 0 0;text-align:center;color:#fff;line-height:1em;background-color:#e5c937;-webkit-border-radius:100%;-moz-border-radius:100%;-ms-border-radius:100%;border-radius:100%}ul.sharing-list li a .text{display:none}
