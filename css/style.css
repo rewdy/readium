@@ -166,6 +166,7 @@ footer#site-footer .widget{margin-bottom:1.5em}footer#site-footer .widget .lined
 footer#site-footer .widget ul{margin:0;padding:0}footer#site-footer .widget ul li{margin:0;padding:.4em 0;list-style:none;border-bottom:1px solid #ddd}
 footer#site-footer .widget ul li:last-child{border-bottom:0 none}
 .readline{position:fixed;top:0;left:0;width:0;height:2px;background-color:#e5c937;-webkit-transition:all .15s;-moz-transition:all .15s;-ms-transition:all .15s;transition:all .15s}
+.video-wrapper{display:block;position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden}.video-wrapper iframe,.video-wrapper object,.video-wrapper embed{position:absolute;top:0;left:0;width:100%;height:100%}
 body.admin-bar #drawer-content{padding-top:1.8em}
 body.admin-bar a#navigation-toggle-link{top:2.75em}
 body.admin-bar header#site-header{background-position:50% 1.8em}

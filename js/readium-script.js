@@ -65,6 +65,9 @@ function setupUI() {
 		jQuery(this).attr('href', newHref);
 	});
 
+	// youTube video wrappers
+	jQuery('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').not('.ignore').wrap('<span class="video-wrapper"></span>');
+
 	// sharing links
 	setupSharing();
 }
