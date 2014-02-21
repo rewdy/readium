@@ -83,9 +83,9 @@ $is_column = (!is_singular('readium_resource') && !is_search()) ? true : false;
 			<div class="sharing-heading">Share</div>
 			<?php share_links(get_permalink(), get_the_title()); ?>
 		</div>
-		<?php endif; ?>
 
 		<div class="readline"><!-- Indcator for how much of the article has been read --></div>
+		<?php endif; ?>
 
 	</article>
 
