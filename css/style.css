@@ -35,15 +35,15 @@ fieldset fieldset{margin:0}
 .form-item fieldset,fieldset.select{column-count:3;column-gap:2%}
 fieldset.select label,.form-item fieldset label{display:inline;font-weight:normal;cursor:pointer;margin-right:1em}
 .form-item .form-help{font-size:.9em;font-style:italic}
-input[type=text],input[type=password],textarea,select{font-size:1rem;font-family:'Helvetica Neue',sans-serif;color:#222;padding:.5em;border:1px solid #cdcdcd;box-shadow:inset 0 1px 3px rgba(0,0,0,0.1);outline:none;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;transition:all .3s}input[type=text]:focus,input[type=password]:focus,textarea:focus,select:focus{border-color:#666}
-#drawer input[type=text],#drawer input[type=password],#drawer textarea,#drawer select{color:#ccc;border:1px solid #222;background-color:#3c3c3c}#drawer input[type=text]:focus,#drawer input[type=password]:focus,#drawer textarea:focus,#drawer select:focus{background-color:#484848;border-color:#111}
-input[type=text],input[type=password],textarea,select{width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}
+input[type=text],input[type=email],input[type=password],textarea,select{font-size:1rem;font-family:'Helvetica Neue',sans-serif;color:#222;padding:.5em;border:1px solid #cdcdcd;box-shadow:inset 0 1px 3px rgba(0,0,0,0.1);outline:none;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;transition:all .3s}input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,textarea:focus,select:focus{border-color:#666}
+#drawer input[type=text],#drawer input[type=email],#drawer input[type=password],#drawer textarea,#drawer select{color:#ccc;border:1px solid #222;background-color:#3c3c3c}#drawer input[type=text]:focus,#drawer input[type=email]:focus,#drawer input[type=password]:focus,#drawer textarea:focus,#drawer select:focus{background-color:#484848;border-color:#111}
+input[type=text],input[type=email],input[type=password],textarea,select{width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}
 button,a.button,input[type=submit],input[type=button],input[type=reset]{display:inline-block;font-size:1em;line-height:1.5em;font-family:'Helvetica Neue',sans-serif;padding:.3em .8em;color:#fff;background:#e5c937;border:solid #ceb11b;border-width:0 0 2px 0;cursor:pointer}button:active,a.button:active,input[type=submit]:active,input[type=button]:active,input[type=reset]:active{border-width:0;position:relative;top:2px}
 div.submit{padding-top:1em;border-top:1px solid #ddd}
 input.narrow{width:10em}
 input.long{width:30em}
 input.full{width:96%}
-@media only screen and (max-width:640px){input[type=text],input[type=password],input.long{width:96%} input.narrow{width:43%}}body{background-color:#e6e6e6}
+@media only screen and (max-width:640px){input[type=text],input[type=email],input[type=password],input.long{width:96%} input.narrow{width:43%}}body{background-color:#e6e6e6}
 #wrapper.blocked{margin:0 auto 3em auto;max-width:750px}
 .grid{margin:0 auto;max-width:750px;min-width:300px}.grid:after{content:" ";display:block;clear:left;height:0;overflow:hidden}
 .row{margin-bottom:1.5em}
