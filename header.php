@@ -95,7 +95,10 @@ Header template file
 						<div id="page-header-overlay">
 							<div class="grid">
 								<div id="page-header-text" class="g12 text-center">
-									<h1 id="page-title"><?php bloginfo('name'); ?></h1>
+									<h1 id="site-title"><?php bloginfo('name'); ?></h1>
+									<?php if (readium_show_tagline()) : ?>
+									<p><?php bloginfo('tagline'); ?></p>
+									<?php endif; ?>
 								</div>
 							</div>
 						</div>

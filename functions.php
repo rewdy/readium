@@ -214,6 +214,14 @@ class Readium_Customize {
 				'transport'	=> 'refresh',
 			)
 		);
+		$wp_customize->add_setting('readium_header_show_tagline',
+			array(
+				'default' 	=> 0,
+				'type'		=> 'option',
+				'capability'=> 'edit_theme_options',
+				'transport'	=> 'refresh',
+			)
+		);
 
 		// add the controls for the settings
 		$wp_customize->add_control(
@@ -238,7 +246,17 @@ class Readium_Customize {
 				),
 			) 
 		);
-
+		$wp_customize->add_control('readium_header_show_tagline',
+			array(
+				'label'   => 'Show the tagline? (Applies only when title is shown over the header image)',
+				'section' => 'readium_header_options_section',
+				'type'    => 'select',
+				'choices'    => array(
+					0 => 'Do not show the tagline',
+					1 => 'Show the tagline',
+				),
+			) 
+		);
 	}
 }
 
@@ -387,6 +405,10 @@ if (!function_exists('get_author_posts_link')) {
 
 function readium_get_header_style() {
 	return get_option('readium_header_style');
+}
+
+function readium_show_tagline() {
+	return get_option('readium_header_show_tagline');
 }
 
 // Function(s) to generate a list of links for sharing
