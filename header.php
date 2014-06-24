@@ -72,9 +72,9 @@ Header template file
 					<?php
 						$header_image = readium_custom_header_image();
 					?>
-					<header id="site-header"<?php echo (!$header_image) ? ' class="no-image"' : ' style="background-image:url(' . $header_image['url'] . ')"'; ?> data-0="background-position:center 0%" data-top-bottom="background-position:center -150%">
+					<header id="site-header"<?php echo (!$header_image) ? ' class="no-image"' : ' style="background-image:url(' . $header_image['url'] . ')"'; ?>>
 						<?php if (readium_get_header_style() == 'bar') : ?>
-						<div id="site-id" data-0="opacity:1" data-100="opacity:0.2">
+						<div id="site-id">
 							<div class="grid">
 								<div class="g12 text-center">
 									<?php $title_tag = (!is_single()) ? 'h1' : 'div'; ?>
@@ -84,7 +84,7 @@ Header template file
 						</div>
 						<?php endif; ?>
 						<?php if (is_singular() || is_post_type_archive('readium_resource')) : ?>
-						<div id="page-header-overlay" data-0="bottom:25%; opacity:1" data-top-top="bottom:12.5%; opacity:0.8" data-top-bottom="opacity:0.1">
+						<div id="page-header-overlay">
 							<div class="grid">
 								<div id="page-header-text" class="g12 text-center">
 									<h1 id="page-title"><?php if (!is_post_type_archive('readium_resource')) { the_title(); } else { ?>Resources<?php } ?></h1>
@@ -92,7 +92,7 @@ Header template file
 							</div>
 						</div>
 						<?php elseif (readium_get_header_style() == 'over_image') : ?>
-						<div id="page-header-overlay" data-0="bottom:25%; opacity:1" data-top-top="bottom:12.5%; opacity:0.8" data-top-bottom="opacity:0.1">
+						<div id="page-header-overlay">
 							<div class="grid">
 								<div id="page-header-text" class="g12 text-center">
 									<h1 id="page-title"><?php bloginfo('name'); ?></h1>
