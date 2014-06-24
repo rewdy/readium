@@ -9,7 +9,66 @@ Functions file
 
 */
 
-// Add custom post types
+/**
+ * Initiating settings
+ */
+
+// Add automatic feed links
+add_theme_support('automatic-feed-links');
+
+// Enable post thumbnails
+add_theme_support('post-thumbnails');
+
+// Add some image sizes for post thumbnails
+add_image_size('resource-thumb', 340, 800);
+add_image_size('page-header', 1600, 700, true);
+
+// Add menus
+if (function_exists('register_nav_menu')) {
+	register_nav_menu('primary', 'Main Menu');
+	register_nav_menu('footer', 'Footer Menu');
+}
+
+// Content width
+if (!isset($content_width)) {
+	$content_width = 864;
+}
+
+/**
+ * Setup Widget Areas
+ */
+function readium_widget_init() {
+	// Register drawer widgets
+	register_sidebar(
+		array(
+			'name' => __('Drawer'),
+			'desc' => __('Place widgets in the "drawer" below the slide out menu.'),
+			'id' => 'drawer-widgets',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>'
+		)
+	);
+	
+	// Register footer widgets
+	register_sidebar(
+		array(
+			'name' => __('Footer'),
+			'desc' => __('Place widgets in the site footer. These look best in multiples of two (2, 4, etc).'),
+			'id' => 'footer-widgets',
+			'before_widget' => '<div id="%1$s" class="g6 widget %2$s">',
+			'after_widget' => '</div></div>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2><div class="lined">'
+		)
+	);
+}
+add_action('widgets_init', 'readium_widget_init');
+
+/**
+ * Custom Post Types
+ */
 function create_post_type() {
 	// set labels
 	$labels = array(
@@ -43,19 +102,6 @@ function create_post_type() {
 }
 add_action('init', 'create_post_type');
 
-// Enable post thumbnails
-add_theme_support('post-thumbnails');
-
-// Add some image sizes for post thumbnails
-add_image_size('resource-thumb', 340, 800);
-add_image_size('page-header', 1600, 700, true);
-
-// Add menus
-if (function_exists('register_nav_menu')) {
-	register_nav_menu('primary', 'Main Menu');
-	register_nav_menu('footer', 'Footer Menu');
-}
-
 // Set the limit for resources archive
 function readium_query_mod($query) {
 	if ($query->is_post_type_archive('readium_resource') && !is_admin()) {
@@ -65,35 +111,10 @@ function readium_query_mod($query) {
 }
 add_action('pre_get_posts','readium_query_mod');
 
-// Add widget areas
-function readium_widget_init() {
-	// Register drawer widgets
-	register_sidebar(
-		array(
-			'name' => __('Drawer'),
-			'desc' => __('Place widgets in the "drawer" below the slide out menu.'),
-			'id' => 'drawer-widgets',
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		)
-	);
-	
-	// Register footer widgets
-	register_sidebar(
-		array(
-			'name' => __('Footer'),
-			'desc' => __('Place widgets in the site footer. These look best in multiples of two (2, 4, etc).'),
-			'id' => 'footer-widgets',
-			'before_widget' => '<div id="%1$s" class="g6 widget %2$s">',
-			'after_widget' => '</div></div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2><div class="lined">'
-		)
-	);
-}
-add_action('widgets_init', 'readium_widget_init');
+
+/**
+ * Custom Header Stuff
+ */
 
 // Custom Header Image
 function readium_custom_header_setup() {
@@ -152,15 +173,27 @@ function readium_header_style() {
 }
 endif; // readium_header_style
 
+
+/**
+ * wp_customize settings
+ */
 class Readium_Customize {
 	public static function register($wp_customize) {
-		// add the section
-		$wp_customize->add_section('readium_options',
+		// add the sections
+		$wp_customize->add_section('readium_resources_header_image_section',
 			array(
 				'title'			=> __('Resources Header Image', 'readium'),
 				'priority'		=> 65,
 				'capability'	=> 'edit_theme_options',
 				'description' 	=> __('Upload a header image to be shown on the resources section of the site <b style="color:#c00">(Please resize to 1600x840ish before uploading)</b>:', 'readium')
+			)
+		);
+		$wp_customize->add_section('readium_header_options_section',
+			array(
+				'title'			=> __('Readium Header Style', 'readium'),
+				'priority'		=> 55,
+				'capability'	=> 'edit_theme_options',
+				'description' 	=> __('How would you like the site title to be displayed?', 'readium')
 			)
 		);
 
@@ -170,21 +203,42 @@ class Readium_Customize {
 				'default' 	=> '%s/img/headers/perfect-vacation.jpg',
 				'type'		=> 'theme_mod',
 				'capability'=> 'edit_theme_options',
-				'transport'	=> 'refresh'
+				'transport'	=> 'refresh',
+			)
+		);
+		$wp_customize->add_setting('readium_header_style',
+			array(
+				'default' 	=> 'bar',
+				'type'		=> 'option',
+				'capability'=> 'edit_theme_options',
+				'transport'	=> 'refresh',
 			)
 		);
 
+		// add the controls for the settings
 		$wp_customize->add_control(
 			new WP_Customize_Image_Control(
 				$wp_customize,
 				'resources_header_image',
 				array(
 					'label' 	=> __('Resources Header Image', 'readium'),
-					'section'	=> 'readium_options',
+					'section'	=> 'readium_resources_header_image_section',
 					'settings'	=> 'resources_header_image'
 				)
 			)
 		);
+		$wp_customize->add_control('readium_header_style',
+			array(
+				'label'   => 'Select the header style',
+				'section' => 'readium_header_options_section',
+				'type'    => 'select',
+				'choices'    => array(
+					'bar' => 'Title in header bar',
+					'over_image' => 'Title over header image',
+				),
+			) 
+		);
+
 	}
 }
 
@@ -239,23 +293,9 @@ endif; // readium_custom_header_image
 add_action('wp_head', 'readium_custom_header_image');
 
 
-// Content width
-if (!isset($content_width)) {
-	$content_width = 864;
-}
-
-// Add automatic feed links
-add_theme_support('automatic-feed-links');
-
-// adding fuction to get the author posts link (the only built-in function echos it).
-if (!function_exists('get_author_posts_link')) {
-	// must be called from within the loop
-	function get_author_posts_link() {
-		$the_author = get_the_author();
-		$author_url = get_author_posts_url(get_the_author_meta('ID'));
-		return '<a href="' . $author_url . '">' . $the_author . '</a>';
-	}
-}
+/**
+ * Comment mods because the defaults here suck
+ */
 
 // Custom comment output
 function readium_comment($comment, $args, $depth) {
@@ -329,12 +369,26 @@ function readium_comment_form() {
 	// send them back out! Bam!
 	return $defaults;
 }
-
 add_filter('comment_form_defaults', 'readium_comment_form');
 
 /**
  * Functions available in templates
 */
+
+// adding fuction to get the author posts link (the only built-in function echos it).
+if (!function_exists('get_author_posts_link')) {
+	// must be called from within the loop
+	function get_author_posts_link() {
+		$the_author = get_the_author();
+		$author_url = get_author_posts_url(get_the_author_meta('ID'));
+		return '<a href="' . $author_url . '">' . $the_author . '</a>';
+	}
+}
+
+function readium_get_header_style() {
+	return get_option('readium_header_style');
+}
+
 // Function(s) to generate a list of links for sharing
 function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = 'fa fa-') {
 	if (isset($url) && isset($title)) {
